@@ -1,0 +1,136 @@
+<resources>
+    <string name="app_name">NutriKita</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="hint_name">Dummy Setiawan</string>
+    <string name="password_error">Password must be at least 8 characters long.</string>
+    <string name="email_pattern">[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+</string>
+    <string name="email_error">Email address invalid.</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="switchToRegister">Don’t have an account?</string>
+    <string name="switchToLogin">Already have an account?</string>
+    <string name="hint_email">dummy@gmail.com</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="Google">Google</string>
+    <string name="or_with">Or With</string>
+    <string name="home_title">Halo, %1$s</string>
+    <string name="home_subtitle">Selalu makan sehat agar tubuh kuat</string>
+    <string name="cek_informasi_makanan">Cek Informasi Makanan</string>
+    <string name="cek_status_gizi">Cek Status Gizi Anak</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="foodscan_history">Food Scan History</string>
+    <string name="telur">telur</string>
+    <string name="food_desc">This Fruit Soup may use jelly which is diced as well to add flavor and crowd to the Fruit Soup. I didn\'t have time to make the jelly, so I didn\'t use it</string>
+    <string name="foodcheck">Food Check</string>
+    <string name="food_check_title">What to Eat Today?</string>
+    <string name="Camera">Camera</string>
+    <string name="Gallery">Gallery</string>
+    <string name="find_nutrient_details">Find Nutrient Details</string>
+    <string name="find_quality_details">Find Quality Details</string>
+    <string name="choose_one">Choose one:</string>
+    <string name="pisang">Pisang</string>
+    <string name="nutrition">Nutrition</string>
+    <string name="vitamin_a">Vitamin A</string>
+    <string name="nutrition_status">Nutrition Status</string>
+    <string name="name_dummy">Dummy Ipsum</string>
+    <string name="detail_nutritional_status">Detail Nutritional Status</string>
+    <string name="stunting_status">Stunting Status</string>
+    <string name="stunting">Stunting</string>
+    <string name="butuh_tindakan_medis_bawa_ke_puskesmas_terdekat">Butuh tindakan medis, bawa ke puskesmas terdekat</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="custom_food">Custom Food</string>
+    <string name="news_title">News</string>
+    <string name="favorite_foods">Favorite Foods</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
+    <string name="food_name">Food Name</string>
+    <string name="fav_food_description">Favorite Food Description</string>
+
+    <!--    custom food activity    -->
+    <string name="calories">Calories</string>
+    <string name="fat">Fat</string>
+    <string name="saturated_fat">Saturated Fat</string>
+    <string name="cholestrol">Cholestrol</string>
+    <string name="sodium">Sodium</string>
+    <string name="carbohydrate">Carbohydrate</string>
+    <string name="fiber">Fiber</string>
+    <string name="sugar">Sugar</string>
+    <string name="protein">Protein</string>
+    <string name="calories_quantity">%1$s/2000</string>
+    <string name="fat_quantity">%1$s/100</string>
+    <string name="saturatedfat_quantity">%1$s/13</string>
+    <string name="cholestrol_quantity">%1$s/300</string>
+    <string name="sodium_quantity">%1$s/2300</string>
+    <string name="carbohydrate_quantity">%1$s/325</string>
+    <string name="fiber_quantity">%1$s/40</string>
+    <string name="sugar_quantity">%1$s/40</string>
+    <string name="protein_quantity">%1$s/200</string>
+    <string name="get_meals_suggestion">Get Meals Suggestion</string>
+
+    <string name="custom_food_result">Custom Food Result</string>
+    <string name="search_result">Search Result</string>
+    <string name="oatmeals">Oatmeals</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="nutritional_values">Nutritional Values</string>
+    <string name="error_confirm_password">Confirm Password not equal to Password</string>
+    <string name="response_data_is_empty">Response data is empty</string>
+    <string name="login_success">Login success</string>
+    <string name="check_food_nutrition">Check Food Nutrition</string>
+    <string name="custom_food_icon">Custom Food Icon</string>
+    <string name="check_food_nutrition_icon">Check Food Nutrition Icon</string>
+    <string name="permission_request_granted">Permission request granted</string>
+    <string name="rejected_permission">Permission request denied</string>
+    <string name="cannot_show_camera">Cannot show camera.</string>
+    <string name="camera_has_no_flash_unit">Camera has no flash unit</string>
+    <string name="cannot_take_a_photo">Cannot take a photo.</string>
+    <string name="get_result"><![CDATA[Get Result >]]></string>
+</resources>
