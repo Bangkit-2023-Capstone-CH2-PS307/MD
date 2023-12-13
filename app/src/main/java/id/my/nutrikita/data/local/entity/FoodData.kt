@@ -1,0 +1,75 @@
+package id.my.nutrikita.data.local.entity
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "food_data")
+data class FoodData(
+    @PrimaryKey(autoGenerate = true)
+    @field:ColumnInfo(name = "id")
+    val id: Int = 0,
+
+    @field:ColumnInfo(name = "name")
+    val name: String,
+
+    @field:ColumnInfo("RecipeId")
+    val recipeId: Int? = null,
+
+    @field:ColumnInfo("Description")
+    val description: String? = null,
+
+    @field:ColumnInfo("Images")
+    val images: String? = null,
+
+    @field:ColumnInfo("RecipeIngredientQuantities")
+    val recipeIngredientQuantities: List<String?>,
+
+    @field:ColumnInfo("RecipeIngredientParts")
+    val recipeIngredientParts: List<String?>? = null,
+
+    @field:ColumnInfo("RecipeInstructions")
+    val recipeInstructions: List<String?>? = null,
+
+    @field:ColumnInfo("RecipeServings")
+    val recipeServings: Double? = null,
+
+    @field:ColumnInfo("RecipeCategory")
+    val recipeCategory: String? = null,
+
+    @field:ColumnInfo("PrepTime")
+    val prepTime: String? = null,
+
+    @field:ColumnInfo("TotalTime")
+    val totalTime: String? = null,
+
+    @field:ColumnInfo("CookTime")
+    val cookTime: String? = null,
+
+    @field:ColumnInfo("SugarContent")
+    val sugarContent: Double? = null,
+
+    @field:ColumnInfo("CholesterolContent")
+    val cholesterolContent: Double? = null,
+
+    @field:ColumnInfo("SaturatedFatContent")
+    val saturatedFatContent: Double? = null,
+
+    @field:ColumnInfo("ProteinContent")
+    val proteinContent: Double? = null,
+
+    @field:ColumnInfo("SodiumContent")
+    val sodiumContent: Double? = null,
+
+    @field:ColumnInfo("Calories")
+    val calories: Double? = null,
+
+    @field:ColumnInfo("CarbohydrateContent")
+    val carbohydrateContent: Double? = null,
+
+    @field:ColumnInfo("FatContent")
+    val fatContent: Double? = null,
+
+    @field:ColumnInfo("FiberContent")
+    val fiberContent: Double? = null
+)
