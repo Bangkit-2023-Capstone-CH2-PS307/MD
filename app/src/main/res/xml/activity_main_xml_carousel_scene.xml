@@ -270,5 +270,4 @@
         motion:constraintSetStart="@+id/slide4">
         <OnSwipe motion:dragDirection="dragLeft" />
     </Transition>
-
 </MotionScene>
