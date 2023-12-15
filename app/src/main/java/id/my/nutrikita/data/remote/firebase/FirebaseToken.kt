@@ -2,19 +2,29 @@ package id.my.nutrikita.data.remote.firebase
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GetTokenResult
 import com.google.firebase.auth.auth
+import java.util.concurrent.CompletableFuture
 
 object FirebaseToken {
     fun getToken(): String {
         val auth: FirebaseAuth = Firebase.auth
         val user = auth.currentUser
         var token = ""
+
+        val future = CompletableFuture<String>()
+
         user?.getIdToken(true)
-            ?.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    token = it.result.token.toString()
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val result: GetTokenResult? = task.result
+                    token = result?.token ?: ""
+                    future.complete(token)
+                } else {
+                    future.completeExceptionally(task.exception)
                 }
             }
-        return token
+
+        return future.get()
     }
 }

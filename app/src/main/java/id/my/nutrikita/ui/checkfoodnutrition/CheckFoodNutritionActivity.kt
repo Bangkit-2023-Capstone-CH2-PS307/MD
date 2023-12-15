@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -15,21 +16,30 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.lifecycle.ViewModelProvider
 import id.my.nutrikita.R
+import id.my.nutrikita.ViewModelFactory
+import id.my.nutrikita.data.remote.Result
 import id.my.nutrikita.databinding.ActivityCheckFoodNutritionBinding
 import id.my.nutrikita.ui.camera.CameraActivity
 import id.my.nutrikita.ui.camera.CameraActivity.Companion.EXTRA_URI_IMAGE
 import id.my.nutrikita.ui.checkfoodresult.CheckFoodResultActivity
-import id.my.nutrikita.ui.login.LoginActivity
 import id.my.nutrikita.ui.main.MainActivity
+import id.my.nutrikita.util.reduceFileImage
+import id.my.nutrikita.util.uriToFile
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 
 class CheckFoodNutritionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckFoodNutritionBinding
+    private lateinit var viewModel: CheckFoodNutritionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckFoodNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel = obtainViewModel(this)
 
         setupView()
         setImage()
@@ -44,6 +54,11 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
+    }
+
+    private fun obtainViewModel(activity: CheckFoodNutritionActivity): CheckFoodNutritionViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[CheckFoodNutritionViewModel::class.java]
     }
 
     private fun startGallery() {
@@ -68,14 +83,52 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
             Log.d("Image URI", "showImage: $it")
             binding.ivFoodCheck.setImageURI(it)
         }
-        if (imgUri != null ) {
+        if (imgUri != null) {
             binding.btnGetResult.alpha = 1f
             binding.btnGetResult.setOnClickListener {
-                startActivity(Intent(this, CheckFoodResultActivity::class.java))
+                uploadImage(imgUri.toUri())
             }
         } else {
             binding.btnGetResult.alpha = 0f
         }
+    }
+
+    private fun uploadImage(uri: Uri) {
+        val imgFile = uriToFile(uri, this).reduceFileImage()
+        val requestImageFile = imgFile.asRequestBody("image/jpeg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "image",
+            imgFile.name,
+            requestImageFile
+        )
+        Log.d(CheckFoodNutritionActivity::class.java.simpleName, requestImageFile.toString())
+        viewModel.postFoodDetect(multipartBody).observe(this) { result ->
+            when (result) {
+                is Result.Success -> {
+                    showLoading(false)
+                    Log.d(CheckFoodNutritionActivity::class.java.simpleName, "result description = ${result.data.data.description}")
+                    val intent = Intent(this, CheckFoodResultActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                }
+
+                is Result.Error -> {
+                    showLoading(false)
+                }
+
+                is Result.Empty -> {
+                    showLoading(false)
+                }
+
+                is Result.Loading -> {
+                    showLoading(true)
+                }
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun allPermissionsGranted() =

@@ -6,7 +6,8 @@ import id.my.nutrikita.data.repository.Repository
 
 object Injection {
     fun provideRepository(context: Context): Repository {
-        val apiService = ApiConfig.getApiService()
-        return Repository.getInstance(apiService)
+        val ccApiService = ApiConfig.getCCApiService()
+        val mlApiService = ApiConfig.getMLApiService()
+        return Repository.getInstance(ccApiService, mlApiService)
     }
 }

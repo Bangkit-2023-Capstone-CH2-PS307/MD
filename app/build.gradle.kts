@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -17,7 +18,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "AUTH_URL", "\"https://nutrikita-api-cc-f6tp6ciamq-et.a.run.app/api/v1/\"")
+        buildConfigField("String", "CC_URL", "\"https://nutrikita-api-cc-f6tp6ciamq-et.a.run.app/api/v1/\"")
+        buildConfigField("String", "ML_URL", "\"https://nutrikita-api-ml-f6tp6ciamq-et.a.run.app/\"")
     }
 
     buildTypes {
@@ -47,11 +49,11 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 
     // firebase
     implementation("com.google.firebase:firebase-auth:22.3.0")
@@ -60,11 +62,11 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     // camera
-    val cameraxVersion = "1.3.0"
+    val cameraxVersion = "1.3.1"
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
     implementation("androidx.camera:camera-view:$cameraxVersion")
-    implementation("androidx.exifinterface:exifinterface:1.3.6")
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
 
     // coroutine support
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
