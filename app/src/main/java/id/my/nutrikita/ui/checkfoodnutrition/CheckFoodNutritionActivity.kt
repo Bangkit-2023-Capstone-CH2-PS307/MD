@@ -106,8 +106,8 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
             when (result) {
                 is Result.Success -> {
                     showLoading(false)
-                    Log.d(CheckFoodNutritionActivity::class.java.simpleName, "result description = ${result.data.data.description}")
                     val intent = Intent(this, CheckFoodResultActivity::class.java)
+                    intent.putExtra(CheckFoodResultActivity.EXTRA_CHECK_FOOD_RESULT, result.data.data)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                 }

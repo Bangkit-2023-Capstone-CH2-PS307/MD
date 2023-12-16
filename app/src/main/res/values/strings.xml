@@ -133,4 +133,7 @@
     <string name="camera_has_no_flash_unit">Camera has no flash unit</string>
     <string name="cannot_take_a_photo">Cannot take a photo.</string>
     <string name="get_result"><![CDATA[Get Result >]]></string>
+    <string name="description">Description</string>
+    <string name="trivia">Trivia</string>
+    <string name="nutritions">Nutritions</string>
 </resources>

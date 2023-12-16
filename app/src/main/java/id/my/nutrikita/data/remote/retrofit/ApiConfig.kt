@@ -51,7 +51,6 @@ object ApiConfig {
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
             val token = runBlocking { FirebaseToken.getToken() }
-            Log.d(ApiConfig::class.java.simpleName, token)
             val requestHeaders = req.newBuilder()
                 .addHeader("Authorization", "Bearer $token")
                 .build()

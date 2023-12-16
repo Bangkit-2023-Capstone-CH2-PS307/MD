@@ -1,6 +1,8 @@
 package id.my.nutrikita.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class FoodDetectResponse(
 
@@ -14,6 +16,7 @@ data class FoodDetectResponse(
 	val status: Int
 )
 
+@Parcelize
 data class Data(
 
 	@field:SerializedName("image_url")
@@ -30,4 +33,4 @@ data class Data(
 
 	@field:SerializedName("nutritions")
 	val nutritions: List<String>
-)
+) : Parcelable
