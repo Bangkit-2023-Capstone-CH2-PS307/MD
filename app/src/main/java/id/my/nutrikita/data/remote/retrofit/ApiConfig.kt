@@ -1,6 +1,7 @@
 package id.my.nutrikita.data.remote.retrofit
 
 import android.util.Log
+import com.google.gson.GsonBuilder
 import id.my.nutrikita.BuildConfig
 import id.my.nutrikita.data.remote.firebase.FirebaseToken
 import kotlinx.coroutines.runBlocking
@@ -57,7 +58,6 @@ object ApiConfig {
             chain.proceed(requestHeaders)
         }
 
-
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor)
@@ -66,11 +66,16 @@ object ApiConfig {
             .readTimeout(60, TimeUnit.SECONDS)
             .build()
 
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
+
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.ML_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()
+
         return retrofit.create(MLApiService::class.java)
     }
 }

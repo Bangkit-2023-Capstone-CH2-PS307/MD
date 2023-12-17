@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import id.my.nutrikita.data.repository.Repository
 import id.my.nutrikita.di.Injection
 import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionViewModel
+import id.my.nutrikita.ui.customfood.CustomFoodViewModel
 import id.my.nutrikita.ui.main.MainViewModel
 import id.my.nutrikita.ui.register.RegisterViewModel
 
@@ -21,6 +22,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
         }
         else if (modelClass.isAssignableFrom(CheckFoodNutritionViewModel::class.java)) {
             return CheckFoodNutritionViewModel(repository) as T
+        }
+        else if (modelClass.isAssignableFrom(CustomFoodViewModel::class.java)) {
+            return CustomFoodViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

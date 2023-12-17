@@ -11,6 +11,18 @@
         android:layout_height="wrap_content"
         android:padding="30dp">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="invisible" />
+
         <TextView
             android:id="@+id/tvCustomFoodTitle"
             android:layout_width="wrap_content"
@@ -116,32 +128,32 @@
             app:layout_constraintTop_toBottomOf="@id/sbSaturatedFat"/>
 
         <TextView
-            android:id="@+id/tvCholestrol"
+            android:id="@+id/tvCholesterol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/cholestrol"
+            android:text="@string/cholesterol"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/quantitySaturatedFat" />
 
         <SeekBar
-            android:id="@+id/sbCholestrol"
+            android:id="@+id/sbCholesterol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCholestrol"
+            app:layout_constraintTop_toBottomOf="@id/tvCholesterol"
             android:max="300"/>
 
         <TextView
-            android:id="@+id/quantityCholestrol"
+            android:id="@+id/quantityCholesterol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cholestrol_quantity"
+            android:text="@string/cholesterol_quantity"
             android:fontFamily="@font/poppins_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbCholestrol"/>
+            app:layout_constraintTop_toBottomOf="@id/sbCholesterol"/>
 
         <TextView
             android:id="@+id/tvSodium"
@@ -151,7 +163,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="@string/sodium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/quantityCholestrol" />
+            app:layout_constraintTop_toBottomOf="@id/quantityCholesterol" />
 
         <SeekBar
             android:id="@+id/sbSodium"

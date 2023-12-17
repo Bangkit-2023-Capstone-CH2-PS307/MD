@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background_details"
-    tools:context=".ui.checkfoodresult.CheckFoodResultActivity">
+    tools:context=".ui.detailfood.DetailFoodActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,10 +28,22 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/pisang"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="60dp"
+            app:layout_constraintEnd_toEndOf="@id/btnFavorite"
+            app:layout_constraintStart_toStartOf="@id/btnArrowBack"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/btnFavorite"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:src="@drawable/baseline_favorite_border_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="30dp"/>
 
         <View
             android:layout_width="match_parent"
@@ -53,70 +65,60 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/tvNutritionsCheckFood"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/nutritions"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivFoodResult" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNutritionalContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="30dp"
-            app:layout_constraintTop_toBottomOf="@id/tvNutritionsCheckFood" />
-
-        <TextView
-            android:id="@+id/tvNutritionalValuesCheckFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/nutritional_values"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvNutritionalContent" />
-
-        <TableLayout
-            android:id="@+id/tableLayoutPercentages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="5dp"
-            android:stretchColumns="*"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNutritionalValuesCheckFood" />
-
-        <TextView
-            android:id="@+id/tvCheckFoodTriviaTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/trivia"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tableLayoutPercentages" />
-
-        <TextView
-            android:id="@+id/tvTriviaContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="50dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/food_desc"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCheckFoodTriviaTitle" />
+            app:layout_constraintTop_toBottomOf="@id/ivFoodResult" />
 
+        <TextView
+            android:id="@+id/tvIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/ingredients"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+        <TextView
+            android:id="@+id/tvIngredientsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIngredients" />
+
+        <TextView
+            android:id="@+id/tvSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/steps"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIngredientsContent" />
+
+        <TextView
+            android:id="@+id/tvStepsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSteps" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
@@ -14,9 +15,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import id.my.nutrikita.R
 import id.my.nutrikita.ViewModelFactory
+import id.my.nutrikita.data.remote.Result
 import id.my.nutrikita.databinding.ActivityMainBinding
 import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionActivity
 import id.my.nutrikita.ui.customfood.CustomFoodActivity
+import id.my.nutrikita.ui.customfoodresult.CustomFoodResultActivity
 import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
 
@@ -82,6 +85,32 @@ class MainActivity : AppCompatActivity() {
         binding.cvCheckFoodNutrition.setOnClickListener {
             startActivity(Intent(this, CheckFoodNutritionActivity::class.java))
         }
+
+        mainViewModel.getInsightData().observe(this) { result ->
+            when (result) {
+                is Result.Success -> {
+                    showLoading(false)
+                    val listNews = result.data.data
+
+                }
+
+                is Result.Error -> {
+                    showLoading(false)
+                }
+
+                is Result.Empty -> {
+                    showLoading(false)
+                }
+
+                is Result.Loading -> {
+                    showLoading(true)
+                }
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun logout(){

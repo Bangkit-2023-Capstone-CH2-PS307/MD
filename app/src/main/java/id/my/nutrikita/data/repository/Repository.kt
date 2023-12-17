@@ -8,7 +8,8 @@ import id.my.nutrikita.data.remote.model.RegisterModel
 import id.my.nutrikita.data.remote.response.RegisterResponse
 import id.my.nutrikita.data.remote.retrofit.CCApiService
 import id.my.nutrikita.data.remote.Result
-import id.my.nutrikita.data.remote.response.CustomFoodResponse
+import id.my.nutrikita.data.remote.model.CustomFoodRequest
+import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
 import id.my.nutrikita.data.remote.response.ErrorResponse
 import id.my.nutrikita.data.remote.response.FoodDetectResponse
 import id.my.nutrikita.data.remote.response.NewsResponse
@@ -24,7 +25,7 @@ class Repository private constructor(
         emit(Result.Loading)
         try {
             val response =
-                ccApiService.register(registerData.name, registerData.email, registerData.password)
+                ccApiService.register(registerData)
             emit(Result.Success(response))
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
@@ -73,10 +74,21 @@ class Repository private constructor(
         fiberContent: Int,
         sugarContent: Int,
         proteinContent: Int
-    ): LiveData<Result<CustomFoodResponse>> = liveData {
+    ): LiveData<Result<List<CustomFoodResponseItem>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = mlApiService.customFood(calories, fatContent, saturatedFatContent, cholesterolContent, sodiumContent, carbohydrateContent, fiberContent, sugarContent, proteinContent)
+            val customFoodRequest = CustomFoodRequest(
+                calories,
+                fatContent,
+                saturatedFatContent,
+                cholesterolContent,
+                sodiumContent,
+                carbohydrateContent,
+                fiberContent,
+                sugarContent,
+                proteinContent
+            )
+            val response = mlApiService.customFood(customFoodRequest)
             emit(Result.Success(response))
         } catch (e: HttpException) {
 

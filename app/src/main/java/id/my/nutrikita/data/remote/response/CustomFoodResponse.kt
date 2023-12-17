@@ -1,20 +1,14 @@
 package id.my.nutrikita.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-data class CustomFoodResponse(
-
-	@field:SerializedName("CustomFoodResponse")
-	val customFoodResponse: List<CustomFoodResponseItem?>? = null
-)
-
+@Parcelize
 data class CustomFoodResponseItem(
 
 	@field:SerializedName("Description")
 	val description: String? = null,
-
-	@field:SerializedName("Keywords")
-	val keywords: List<String?>? = null,
 
 	@field:SerializedName("AuthorName")
 	val authorName: String? = null,
@@ -35,7 +29,7 @@ data class CustomFoodResponseItem(
 	val name: String? = null,
 
 	@field:SerializedName("RecipeIngredientQuantities")
-	val recipeIngredientQuantities: List<String?>? = null,
+	val recipeIngredientQuantities: List<String>? = null,
 
 	@field:SerializedName("RecipeServings")
 	val recipeServings: Double? = null,
@@ -65,7 +59,7 @@ data class CustomFoodResponseItem(
 	val images: String? = null,
 
 	@field:SerializedName("RecipeIngredientParts")
-	val recipeIngredientParts: List<String?>? = null,
+	val recipeIngredientParts: List<String>? = null,
 
 	@field:SerializedName("SodiumContent")
 	val sodiumContent: Double? = null,
@@ -93,4 +87,4 @@ data class CustomFoodResponseItem(
 
 	@field:SerializedName("FiberContent")
 	val fiberContent: Double? = null
-)
+): Parcelable
