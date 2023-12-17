@@ -20,6 +20,7 @@ import id.my.nutrikita.data.remote.response.Data
 import id.my.nutrikita.databinding.ActivityCheckFoodResultBinding
 import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionActivity
 import id.my.nutrikita.ui.main.MainActivity
+import java.util.Locale
 
 class CheckFoodResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckFoodResultBinding
@@ -78,7 +79,13 @@ class CheckFoodResultActivity : AppCompatActivity() {
                     TableRow.LayoutParams.WRAP_CONTENT
                 )
 
-                val cells = percentage.split(" ")
+                val cells = if (percentage.toLowerCase(Locale.ROOT) == "vitamin") {
+                    // Jika kata adalah 'vitamin', split setelah dua kata awal
+                    percentage.split(" ", limit = 3)
+                } else {
+                    // Jika bukan 'vitamin', split setelah satu kata awal
+                    percentage.split(" ", limit = 2)
+                }
 
                 for (cellData in cells) {
                     val dataCell = TextView(this)
@@ -94,6 +101,7 @@ class CheckFoodResultActivity : AppCompatActivity() {
                 binding.tableLayoutPercentages.addView(dataRow)
             }
         }
+        
     }
 
     companion object {
