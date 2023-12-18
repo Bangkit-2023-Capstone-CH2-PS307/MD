@@ -13,9 +13,6 @@ data class FoodData(
     @field:ColumnInfo(name = "name")
     val name: String,
 
-    @field:ColumnInfo("RecipeId")
-    val recipeId: Int? = null,
-
     @field:ColumnInfo("Description")
     val description: String? = null,
 
@@ -23,13 +20,13 @@ data class FoodData(
     val images: String? = null,
 
     @field:ColumnInfo("RecipeIngredientQuantities")
-    val recipeIngredientQuantities: List<String?>,
+    val recipeIngredientQuantities: List<String>,
 
     @field:ColumnInfo("RecipeIngredientParts")
-    val recipeIngredientParts: List<String?>? = null,
+    val recipeIngredientParts: List<String>,
 
     @field:ColumnInfo("RecipeInstructions")
-    val recipeInstructions: List<String?>? = null,
+    val recipeInstructions: String? = null,
 
     @field:ColumnInfo("RecipeServings")
     val recipeServings: Double? = null,
@@ -37,14 +34,8 @@ data class FoodData(
     @field:ColumnInfo("RecipeCategory")
     val recipeCategory: String? = null,
 
-    @field:ColumnInfo("PrepTime")
-    val prepTime: String? = null,
-
     @field:ColumnInfo("TotalTime")
     val totalTime: String? = null,
-
-    @field:ColumnInfo("CookTime")
-    val cookTime: String? = null,
 
     @field:ColumnInfo("SugarContent")
     val sugarContent: Double? = null,

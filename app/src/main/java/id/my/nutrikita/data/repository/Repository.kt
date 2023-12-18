@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
+import id.my.nutrikita.data.local.dao.FavoriteFoodDao
+import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.model.RegisterModel
 import id.my.nutrikita.data.remote.response.RegisterResponse
 import id.my.nutrikita.data.remote.retrofit.CCApiService
@@ -19,7 +21,8 @@ import retrofit2.HttpException
 
 class Repository private constructor(
     private val ccApiService: CCApiService,
-    private val mlApiService: MLApiService
+    private val mlApiService: MLApiService,
+    private val favoriteFoodDao: FavoriteFoodDao,
 ) {
     fun postRegister(registerData: RegisterModel): LiveData<Result<RegisterResponse>> = liveData {
         emit(Result.Loading)
@@ -95,14 +98,25 @@ class Repository private constructor(
         }
     }
 
+    fun getFavoriteFoods(): LiveData<List<FoodData>> = favoriteFoodDao.getAllFavorites()
+
+    suspend fun deleteFavoriteFoodsById(id: Int) {
+        favoriteFoodDao.delete(id)
+    }
+
+    suspend fun setFavoriteFoods(foodData: FoodData) {
+        favoriteFoodDao.insert(foodData)
+    }
+
     companion object {
         @Volatile
         private var instance: Repository? = null
         fun getInstance(
             ccApiService: CCApiService,
-            mlApiService: MLApiService
+            mlApiService: MLApiService,
+            favoriteFoodDao: FavoriteFoodDao
         ): Repository = instance ?: synchronized(this) {
-            instance ?: Repository(ccApiService, mlApiService)
+            instance ?: Repository(ccApiService, mlApiService, favoriteFoodDao)
         }.also { instance = it }
     }
 }
