@@ -87,7 +87,7 @@
     <string name="height">Height</string>
     <string name="weight">Weight</string>
     <string name="custom_food">Custom Food</string>
-    <string name="news_title">News</string>
+    <string name="news_title">Nutrikita News Corner</string>
     <string name="favorite_foods">Favorite Foods</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
@@ -136,4 +136,5 @@
     <string name="description">Description</string>
     <string name="trivia">Trivia</string>
     <string name="nutritions">Nutritions</string>
+    <string name="web_success_announce">The web has been successfully loaded</string>
 </resources>

@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -18,7 +17,6 @@ import id.my.nutrikita.BuildConfig
 import id.my.nutrikita.R
 import id.my.nutrikita.data.remote.response.Data
 import id.my.nutrikita.databinding.ActivityCheckFoodResultBinding
-import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionActivity
 import id.my.nutrikita.ui.main.MainActivity
 import java.util.Locale
 
@@ -79,11 +77,9 @@ class CheckFoodResultActivity : AppCompatActivity() {
                     TableRow.LayoutParams.WRAP_CONTENT
                 )
 
-                val cells = if (percentage.toLowerCase(Locale.ROOT) == "vitamin") {
-                    // Jika kata adalah 'vitamin', split setelah dua kata awal
+                val cells = if (percentage.lowercase(Locale.ROOT) == "vitamin") {
                     percentage.split(" ", limit = 3)
                 } else {
-                    // Jika bukan 'vitamin', split setelah satu kata awal
                     percentage.split(" ", limit = 2)
                 }
 
@@ -101,7 +97,7 @@ class CheckFoodResultActivity : AppCompatActivity() {
                 binding.tableLayoutPercentages.addView(dataRow)
             }
         }
-        
+
     }
 
     companion object {

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -16,12 +17,17 @@ import com.google.firebase.auth.auth
 import id.my.nutrikita.R
 import id.my.nutrikita.ViewModelFactory
 import id.my.nutrikita.data.remote.Result
+import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
+import id.my.nutrikita.data.remote.response.DataItem
 import id.my.nutrikita.databinding.ActivityMainBinding
 import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionActivity
 import id.my.nutrikita.ui.customfood.CustomFoodActivity
+import id.my.nutrikita.ui.customfoodresult.CustomFoodAdapter
 import id.my.nutrikita.ui.customfoodresult.CustomFoodResultActivity
+import id.my.nutrikita.ui.detailfood.DetailFoodActivity
 import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
+import id.my.nutrikita.ui.newsview.NewsViewActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,6 +45,67 @@ class MainActivity : AppCompatActivity() {
 
         setupView()
         setBindingView()
+        setupNewsData()
+    }
+
+    private fun setupNewsData() {
+
+        mainViewModel.getInsightData().observe(this) { result ->
+            when (result) {
+                is Result.Success -> {
+                    showLoading(false)
+                    val listNews = result.data.data
+
+                    Glide.with(this)
+                        .load(listNews[0].image)
+                        .into(binding.ivInsights1)
+                    Glide.with(this)
+                        .load(listNews[1].image)
+                        .into(binding.ivInsights2)
+                    Glide.with(this)
+                        .load(listNews[2].image)
+                        .into(binding.ivInsights3)
+                    Glide.with(this)
+                        .load(listNews[3].image)
+                        .into(binding.ivInsights4)
+                    Glide.with(this)
+                        .load(listNews[4].image)
+                        .into(binding.ivInsights5)
+
+                    binding.tvInsightsTitle1.text = listNews[0].title
+                    binding.tvInsightsTitle2.text = listNews[1].title
+                    binding.tvInsightsTitle3.text = listNews[2].title
+                    binding.tvInsightsTitle4.text = listNews[3].title
+                    binding.tvInsightsTitle5.text = listNews[4].title
+
+                    binding.cvInsights1.setOnClickListener {
+
+                    }
+                    binding.cvInsights2.setOnClickListener { intentNews(listNews[0].url) }
+                    binding.cvInsights3.setOnClickListener { intentNews(listNews[1].url) }
+                    binding.cvInsights4.setOnClickListener { intentNews(listNews[2].url) }
+                    binding.cvInsights5.setOnClickListener { intentNews(listNews[3].url) }
+                }
+
+                is Result.Error -> {
+                    showLoading(false)
+                }
+
+                is Result.Empty -> {
+                    showLoading(false)
+                }
+
+                is Result.Loading -> {
+                    showLoading(true)
+                }
+            }
+        }
+    }
+
+    private fun intentNews(url: String) {
+        val intent = Intent(this, NewsViewActivity::class.java)
+        intent.putExtra(NewsViewActivity.EXTRA_NEWS_URL, url)
+        startActivity(intent)
     }
 
 
@@ -72,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setBindingView() {
         val user = auth.currentUser
-        binding.ibLogout.setOnClickListener{
+        binding.ibLogout.setOnClickListener {
             logout()
         }
         binding.tvHomeTitle.text = getString(R.string.home_title, user?.displayName)
@@ -85,35 +152,13 @@ class MainActivity : AppCompatActivity() {
         binding.cvCheckFoodNutrition.setOnClickListener {
             startActivity(Intent(this, CheckFoodNutritionActivity::class.java))
         }
-
-        mainViewModel.getInsightData().observe(this) { result ->
-            when (result) {
-                is Result.Success -> {
-                    showLoading(false)
-                    val listNews = result.data.data
-
-                }
-
-                is Result.Error -> {
-                    showLoading(false)
-                }
-
-                is Result.Empty -> {
-                    showLoading(false)
-                }
-
-                is Result.Loading -> {
-                    showLoading(true)
-                }
-            }
-        }
     }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    private fun logout(){
+    private fun logout() {
         Firebase.auth.signOut()
         startActivity(Intent(this@MainActivity, LoginActivity::class.java))
         finish()

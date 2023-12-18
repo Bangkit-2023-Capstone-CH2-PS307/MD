@@ -19,6 +19,9 @@
         android:theme="@style/Theme.NutriKita"
         tools:targetApi="31">
         <activity
+            android:name=".ui.newsview.NewsViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detailfood.DetailFoodActivity"
             android:exported="false" />
         <activity

@@ -55,8 +55,8 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:elevation="3dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/carousel"
@@ -96,15 +96,27 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/backgrounds/scenic" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkOverlay"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvInsightsTitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:ellipsize="end"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/news_title"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="20dp"
+                        android:text="@string/food_desc"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -117,8 +129,8 @@
                 android:layout_height="166dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="50dp"
+                android:visibility="invisible"
                 app:cardCornerRadius="10dp"
-                android:alpha="0"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -135,15 +147,27 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/backgrounds/scenic" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkOverlay"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvInsightsTitle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:ellipsize="end"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/news_title"
-                        android:textColor="@color/primary"
-                        android:textSize="20sp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="20dp"
+                        android:text="@string/food_desc"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -156,14 +180,15 @@
                 android:layout_height="166dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="50dp"
+                android:visibility="invisible"
                 app:cardCornerRadius="10dp"
-                android:alpha="0"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <ImageView
                         android:id="@+id/ivInsights3"
                         android:layout_width="match_parent"
@@ -173,15 +198,27 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/backgrounds/scenic" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkOverlay"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvInsightsTitle3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:ellipsize="end"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/news_title"
+                        android:maxLines="1"
+                        android:paddingHorizontal="20dp"
+                        android:text="@string/food_desc"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -194,8 +231,8 @@
                 android:layout_height="166dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="50dp"
+                android:visibility="invisible"
                 app:cardCornerRadius="10dp"
-                android:alpha="0"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -212,15 +249,27 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/backgrounds/scenic" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkOverlay"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvInsightsTitle4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:ellipsize="end"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/news_title"
-                        android:textColor="@color/red"
-                        android:textSize="20sp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="20dp"
+                        android:text="@string/food_desc"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -233,8 +282,8 @@
                 android:layout_height="166dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="50dp"
+                android:visibility="invisible"
                 app:cardCornerRadius="10dp"
-                android:alpha="0"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -251,15 +300,26 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/backgrounds/scenic" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkOverlay"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvInsightsTitle5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/news_title"
-                        android:textColor="@color/hint_color"
-                        android:textSize="20sp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="20dp"
+                        android:text="@string/food_desc"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -272,12 +332,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="3dp"
-                app:srcCompat="@drawable/ic_circle_indicator"
-                app:altSrc="@drawable/ic_indicator"
                 android:tint="@color/black"
+                app:altSrc="@drawable/ic_indicator"
                 app:crossfade="1"
                 app:layout_constraintEnd_toStartOf="@id/indicator2"
-                app:layout_constraintTop_toBottomOf="@id/cvInsights1" />
+                app:layout_constraintTop_toBottomOf="@id/cvInsights1"
+                app:srcCompat="@drawable/ic_circle_indicator" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/indicator2"
@@ -285,25 +345,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="3dp"
-                app:srcCompat="@drawable/ic_circle_indicator"
-                app:altSrc="@drawable/ic_indicator"
                 android:tint="@color/black"
+                app:altSrc="@drawable/ic_indicator"
                 app:crossfade="0"
                 app:layout_constraintEnd_toStartOf="@id/indicator3"
-                app:layout_constraintTop_toBottomOf="@id/cvInsights1" />
+                app:layout_constraintTop_toBottomOf="@id/cvInsights1"
+                app:srcCompat="@drawable/ic_circle_indicator" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/indicator3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_circle_indicator"
-                app:altSrc="@drawable/ic_indicator"
                 android:tint="@color/black"
+                app:altSrc="@drawable/ic_indicator"
                 app:crossfade="0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvInsights1" />
+                app:layout_constraintTop_toBottomOf="@id/cvInsights1"
+                app:srcCompat="@drawable/ic_circle_indicator" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/indicator4"
@@ -311,12 +371,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_circle_indicator"
-                app:altSrc="@drawable/ic_indicator"
                 android:tint="@color/black"
+                app:altSrc="@drawable/ic_indicator"
                 app:crossfade="0"
                 app:layout_constraintStart_toEndOf="@id/indicator3"
-                app:layout_constraintTop_toBottomOf="@id/cvInsights1" />
+                app:layout_constraintTop_toBottomOf="@id/cvInsights1"
+                app:srcCompat="@drawable/ic_circle_indicator" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/indicator5"
@@ -324,12 +384,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_circle_indicator"
-                app:altSrc="@drawable/ic_indicator"
                 android:tint="@color/black"
+                app:altSrc="@drawable/ic_indicator"
                 app:crossfade="0"
                 app:layout_constraintStart_toEndOf="@id/indicator4"
-                app:layout_constraintTop_toBottomOf="@id/cvInsights1" />
+                app:layout_constraintTop_toBottomOf="@id/cvInsights1"
+                app:srcCompat="@drawable/ic_circle_indicator" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -431,6 +491,7 @@
             app:layout_constraintTop_toTopOf="@id/tvFavoriteFoodTitle" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavoriteFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -440,6 +501,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvFavoriteFoodTitle" />
 
         <TextView
+            android:id="@+id/tvEmptyFavorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"

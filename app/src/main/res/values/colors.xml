@@ -7,4 +7,5 @@
     <color name="primary">#FFA114</color>
     <color name="transparent">#00000000</color>
     <color name="red">#F44336</color>
+    <color name="darkOverlay">#6B000000</color>
 </resources>
