@@ -4,20 +4,29 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import id.my.nutrikita.R
+import id.my.nutrikita.ViewModelFactory
+import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
 import id.my.nutrikita.databinding.ActivityDetailFoodBinding
+import id.my.nutrikita.ui.customfood.CustomFoodActivity
+import id.my.nutrikita.ui.customfood.CustomFoodViewModel
 
 class DetailFoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailFoodBinding
+    private lateinit var viewModel: DetailFoodViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailFoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel = obtainViewModel(this)
 
         setupFoodData()
         binding.btnArrowBack.setOnClickListener {
@@ -34,6 +43,53 @@ class DetailFoodActivity : AppCompatActivity() {
         }
 
         val listSteps = foodData?.recipeInstructions?.split(".,")?.map { it.trim() + "." }
+        var isFavorite = false
+        foodData?.name?.let {
+            viewModel.isFoodFavorite(it).observe(this){
+                isFavorite = it > 0
+                if (isFavorite) {
+                    binding.btnFavorite.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            binding.btnFavorite.context,
+                            R.drawable.baseline_favorite_24
+                        )
+                    )
+                }
+                else {
+                    binding.btnFavorite.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            binding.btnFavorite.context,
+                            R.drawable.baseline_favorite_border_24
+                        )
+                    )
+                }
+            }
+        }
+
+        val favData = foodData?.recipeIngredientParts?.let { recipeIngredients ->
+            foodData.recipeIngredientQuantities.let { recipeQuantity ->
+                FoodData(
+                    name = foodData.name,
+                    description = foodData.description,
+                    recipeIngredientParts = recipeIngredients,
+                    recipeIngredientQuantities = recipeQuantity,
+                    images = foodData.images,
+                    recipeInstructions = foodData.recipeInstructions,
+                    recipeServings = foodData.recipeServings,
+                    recipeCategory = foodData.recipeCategory,
+                    totalTime = foodData.totalTime,
+                    sugarContent = foodData.sugarContent,
+                    cholesterolContent = foodData.cholesterolContent,
+                    saturatedFatContent = foodData.saturatedFatContent,
+                    proteinContent = foodData.proteinContent,
+                    sodiumContent = foodData.sodiumContent,
+                    calories = foodData.calories,
+                    carbohydrateContent = foodData.carbohydrateContent,
+                    fatContent = foodData.fatContent,
+                    fiberContent = foodData.fiberContent
+                )
+            }
+        }
 
         binding.tvFoodName.text = foodData?.name
         binding.tvDescription.text = foodData?.description
@@ -46,9 +102,36 @@ class DetailFoodActivity : AppCompatActivity() {
             .error(R.drawable.ic_place_holder)
             .into(binding.ivFoodResult)
 
+        binding.btnFavorite.setOnClickListener{
+            if (isFavorite) {
+                foodData?.name?.let { name -> viewModel.deleteFavorite(name) }
+                binding.btnFavorite.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        binding.btnFavorite.context,
+                        R.drawable.baseline_favorite_border_24
+                    )
+                )
+            }
+            else {
+                if (favData != null) {
+                    viewModel.saveFavoriteFood(favData)
+                }
+                binding.btnFavorite.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        binding.btnFavorite.context,
+                        R.drawable.baseline_favorite_24
+                    )
+                )
+            }
+        }
     }
 
-    fun textListBuilder(list: List<String>?): SpannableStringBuilder {
+    private fun obtainViewModel(activity: DetailFoodActivity): DetailFoodViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[DetailFoodViewModel::class.java]
+    }
+
+    private fun textListBuilder(list: List<String>?): SpannableStringBuilder {
         val builder = SpannableStringBuilder()
 
         if (list != null) {

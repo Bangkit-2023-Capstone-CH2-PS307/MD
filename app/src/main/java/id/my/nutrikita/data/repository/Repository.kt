@@ -100,13 +100,17 @@ class Repository private constructor(
 
     fun getFavoriteFoods(): LiveData<List<FoodData>> = favoriteFoodDao.getAllFavorites()
 
-    suspend fun deleteFavoriteFoodsById(id: Int) {
-        favoriteFoodDao.delete(id)
+    suspend fun deleteFavoriteFoodsById(name: String) {
+        favoriteFoodDao.delete(name)
     }
 
     suspend fun setFavoriteFoods(foodData: FoodData) {
         favoriteFoodDao.insert(foodData)
     }
+
+    fun getFavoriteByName(name: String): LiveData<FoodData> = favoriteFoodDao.getFavoriteFoodByName(name)
+
+    fun isFoodFavorite(name: String): LiveData<Int> = favoriteFoodDao.isFoodFavoriteByName(name)
 
     companion object {
         @Volatile

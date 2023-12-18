@@ -12,12 +12,15 @@ interface FavoriteFoodDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(foodData: FoodData)
 
-    @Query("DELETE FROM food_data WHERE id=:id")
-    suspend fun delete(id: Int)
+    @Query("DELETE FROM food_data WHERE name =:name")
+    suspend fun delete(name: String)
 
     @Query("SELECT * from food_data")
     fun getAllFavorites(): LiveData<List<FoodData>>
 
-    @Query("SELECT * FROM food_data WHERE id=:id")
-    fun getFavoriteFoodById(id: Int): LiveData<FoodData>
+    @Query("SELECT * FROM food_data WHERE name = :name")
+    fun getFavoriteFoodByName(name: String): LiveData<FoodData>
+
+    @Query("SELECT COUNT(*) FROM food_data WHERE name = :name")
+    fun isFoodFavoriteByName(name: String): LiveData<Int>
 }

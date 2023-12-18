@@ -11,7 +11,7 @@ data class FoodData(
     val id: Int = 0,
 
     @field:ColumnInfo(name = "name")
-    val name: String,
+    val name: String? = null,
 
     @field:ColumnInfo("Description")
     val description: String? = null,
