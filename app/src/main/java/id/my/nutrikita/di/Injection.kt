@@ -8,9 +8,10 @@ import id.my.nutrikita.data.repository.Repository
 object Injection {
     fun provideRepository(context: Context): Repository {
         val ccApiService = ApiConfig.getCCApiService()
+        val ccAuthApiService = ApiConfig.getCCApiServiceForAuth()
         val mlApiService = ApiConfig.getMLApiService()
         val database = FavoriteFoodDatabase.getDatabase(context)
         val favoriteFoodDao = database.favoriteFoodDao()
-        return Repository.getInstance(ccApiService, mlApiService, favoriteFoodDao)
+        return Repository.getInstance(ccApiService, ccAuthApiService, mlApiService, favoriteFoodDao)
     }
 }

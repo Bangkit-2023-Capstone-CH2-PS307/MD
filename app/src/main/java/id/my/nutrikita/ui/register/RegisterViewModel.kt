@@ -13,7 +13,7 @@ class RegisterViewModel(private val repository: Repository) : ViewModel() {
         email: String,
         password: String
     ): LiveData<Result<RegisterResponse>> {
-        val user = RegisterModel(name, email, password)
+        val user = RegisterModel(email, password, name)
         return repository.postRegister(user)
     }
 }

@@ -21,6 +21,7 @@ import retrofit2.HttpException
 
 class Repository private constructor(
     private val ccApiService: CCApiService,
+    private val ccAuthApiService: CCApiService,
     private val mlApiService: MLApiService,
     private val favoriteFoodDao: FavoriteFoodDao,
 ) {
@@ -28,7 +29,7 @@ class Repository private constructor(
         emit(Result.Loading)
         try {
             val response =
-                ccApiService.register(registerData)
+                ccAuthApiService.register(registerData)
             emit(Result.Success(response))
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
@@ -117,10 +118,11 @@ class Repository private constructor(
         private var instance: Repository? = null
         fun getInstance(
             ccApiService: CCApiService,
+            ccAuthApiService: CCApiService,
             mlApiService: MLApiService,
             favoriteFoodDao: FavoriteFoodDao
         ): Repository = instance ?: synchronized(this) {
-            instance ?: Repository(ccApiService, mlApiService, favoriteFoodDao)
+            instance ?: Repository(ccApiService, ccAuthApiService, mlApiService, favoriteFoodDao)
         }.also { instance = it }
     }
 }
