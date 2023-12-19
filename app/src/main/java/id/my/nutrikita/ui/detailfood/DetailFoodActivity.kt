@@ -28,24 +28,33 @@ class DetailFoodActivity : AppCompatActivity() {
 
         viewModel = obtainViewModel(this)
 
-        setupFoodData()
         binding.btnArrowBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
-    }
 
-    private fun setupFoodData() {
-        val foodData = if (Build.VERSION.SDK_INT >= 33) {
+        val foodData: CustomFoodResponseItem? = if (Build.VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra(EXTRA_FOOD_DATA, CustomFoodResponseItem::class.java)
         } else {
             @Suppress("DEPRECATION")
             intent.getParcelableExtra(EXTRA_FOOD_DATA)
         }
 
-        val listSteps = foodData?.recipeInstructions?.split(".,")?.map { it.trim() + "." }
+        val favFoodData: FoodData? = if (Build.VERSION.SDK_INT >= 33) {
+            intent.getParcelableExtra(EXTRA_FAV_FOOD_DATA, FoodData::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(EXTRA_FAV_FOOD_DATA)
+        }
+
+        if (foodData != null) setupFoodData(foodData) else favFoodData?.let { setupFavData(it) }
+
+    }
+
+    private fun setupFoodData(foodData: CustomFoodResponseItem) {
+        val listSteps = foodData.recipeInstructions?.split(".,")?.map { it.trim() + "." }
         var isFavorite = false
-        foodData?.name?.let {
-            viewModel.isFoodFavorite(it).observe(this){
+        foodData.name?.let {
+            viewModel.isFoodFavorite(it).observe(this) {
                 isFavorite = it > 0
                 if (isFavorite) {
                     binding.btnFavorite.setImageDrawable(
@@ -54,8 +63,7 @@ class DetailFoodActivity : AppCompatActivity() {
                             R.drawable.baseline_favorite_24
                         )
                     )
-                }
-                else {
+                } else {
                     binding.btnFavorite.setImageDrawable(
                         ContextCompat.getDrawable(
                             binding.btnFavorite.context,
@@ -66,7 +74,7 @@ class DetailFoodActivity : AppCompatActivity() {
             }
         }
 
-        val favData = foodData?.recipeIngredientParts?.let { recipeIngredients ->
+        val favData = foodData.recipeIngredientParts.let { recipeIngredients ->
             foodData.recipeIngredientQuantities.let { recipeQuantity ->
                 FoodData(
                     name = foodData.name,
@@ -91,37 +99,78 @@ class DetailFoodActivity : AppCompatActivity() {
             }
         }
 
-        binding.tvFoodName.text = foodData?.name
-        binding.tvDescription.text = foodData?.description
-        binding.tvIngredientsContent.text = textListBuilder(foodData?.recipeIngredientParts)
+        binding.tvFoodName.text = foodData.name
+        binding.tvDescription.text = foodData.description
+        binding.tvIngredientsContent.text = textListBuilder(foodData.recipeIngredientParts)
         binding.tvStepsContent.text = textListBuilder(listSteps)
         Glide.with(this)
-            .load(foodData?.images)
+            .load(foodData.images)
             .apply(RequestOptions.bitmapTransform(CircleCrop()))
             .placeholder(R.drawable.ic_place_holder)
             .error(R.drawable.ic_place_holder)
             .into(binding.ivFoodResult)
 
-        binding.btnFavorite.setOnClickListener{
+        binding.btnFavorite.setOnClickListener {
             if (isFavorite) {
-                foodData?.name?.let { name -> viewModel.deleteFavorite(name) }
-                binding.btnFavorite.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        binding.btnFavorite.context,
-                        R.drawable.baseline_favorite_border_24
-                    )
-                )
+                foodData.name?.let { name -> viewModel.deleteFavorite(name) }
+//                binding.btnFavorite.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        binding.btnFavorite.context,
+//                        R.drawable.baseline_favorite_border_24
+//                    )
+//                )
+            } else {
+                viewModel.saveFavoriteFood(favData)
+//                binding.btnFavorite.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        binding.btnFavorite.context,
+//                        R.drawable.baseline_favorite_24
+//                    )
+//                )
             }
-            else {
-                if (favData != null) {
-                    viewModel.saveFavoriteFood(favData)
-                }
-                binding.btnFavorite.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        binding.btnFavorite.context,
-                        R.drawable.baseline_favorite_24
+        }
+    }
+
+    private fun setupFavData(favData: FoodData) {
+        val listSteps = favData.recipeInstructions?.split(".,")?.map { it.trim() + "." }
+        var isFavorite = false
+        favData.name?.let {
+            viewModel.isFoodFavorite(it).observe(this) {
+                isFavorite = it > 0
+                if (isFavorite) {
+                    binding.btnFavorite.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            binding.btnFavorite.context,
+                            R.drawable.baseline_favorite_24
+                        )
                     )
-                )
+                } else {
+                    binding.btnFavorite.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            binding.btnFavorite.context,
+                            R.drawable.baseline_favorite_border_24
+                        )
+                    )
+                }
+            }
+        }
+
+        binding.tvFoodName.text = favData.name
+        binding.tvDescription.text = favData.description
+        binding.tvIngredientsContent.text = textListBuilder(favData.recipeIngredientParts)
+        binding.tvStepsContent.text = textListBuilder(listSteps)
+        Glide.with(this)
+            .load(favData.images)
+            .apply(RequestOptions.bitmapTransform(CircleCrop()))
+            .placeholder(R.drawable.ic_place_holder)
+            .error(R.drawable.ic_place_holder)
+            .into(binding.ivFoodResult)
+
+        binding.btnFavorite.setOnClickListener {
+            if (isFavorite) {
+                favData.name?.let { name -> viewModel.deleteFavorite(name) }
+            } else {
+                viewModel.saveFavoriteFood(favData)
             }
         }
     }
@@ -145,5 +194,6 @@ class DetailFoodActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_FOOD_DATA = "extra_food"
+        const val EXTRA_FAV_FOOD_DATA = "extra_fav_food"
     }
 }

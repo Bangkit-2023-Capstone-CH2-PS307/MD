@@ -9,6 +9,7 @@ import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionViewModel
 import id.my.nutrikita.ui.customfood.CustomFoodViewModel
 import id.my.nutrikita.ui.customfoodresult.CustomFoodResultViewModel
 import id.my.nutrikita.ui.detailfood.DetailFoodViewModel
+import id.my.nutrikita.ui.favorite.FavoriteFoodViewModel
 import id.my.nutrikita.ui.main.MainViewModel
 import id.my.nutrikita.ui.register.RegisterViewModel
 
@@ -33,6 +34,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
         }
         else if (modelClass.isAssignableFrom(DetailFoodViewModel::class.java)) {
             return DetailFoodViewModel(repository) as T
+        }
+        else if (modelClass.isAssignableFrom(FavoriteFoodViewModel::class.java)) {
+            return FavoriteFoodViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

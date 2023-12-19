@@ -1,10 +1,13 @@
 package id.my.nutrikita.data.local.entity
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "food_data")
+@Parcelize
 data class FoodData(
     @PrimaryKey(autoGenerate = true)
     @field:ColumnInfo(name = "id")
@@ -63,4 +66,4 @@ data class FoodData(
 
     @field:ColumnInfo("FiberContent")
     val fiberContent: Double? = null
-)
+) : Parcelable

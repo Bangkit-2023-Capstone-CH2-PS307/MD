@@ -4,34 +4,33 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.ImageButton
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import id.my.nutrikita.R
 import id.my.nutrikita.ViewModelFactory
+import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.Result
-import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
-import id.my.nutrikita.data.remote.response.DataItem
 import id.my.nutrikita.databinding.ActivityMainBinding
 import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionActivity
 import id.my.nutrikita.ui.customfood.CustomFoodActivity
-import id.my.nutrikita.ui.customfoodresult.CustomFoodAdapter
-import id.my.nutrikita.ui.customfoodresult.CustomFoodResultActivity
 import id.my.nutrikita.ui.detailfood.DetailFoodActivity
+import id.my.nutrikita.ui.favorite.FavoriteAdapter
 import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
 import id.my.nutrikita.ui.newsview.NewsViewActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,16 +40,50 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        mainViewModel = obtainViewModel(this)
+        viewModel = obtainViewModel(this)
 
         setupView()
+        setupFavoriteRecyclerView()
+
+        viewModel.getAllFavoriteFood().observe(this) {
+            setupFavoriteFoodData(it)
+        }
         setBindingView()
         setupNewsData()
     }
 
+    private fun setupFavoriteRecyclerView() {
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvFavoriteFood.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvFavoriteFood.setHasFixedSize(true)
+        binding.rvFavoriteFood.addItemDecoration(itemDecoration)
+    }
+
+    private fun setupFavoriteFoodData(foodData: List<FoodData>) {
+        val foods = foodData.take(5)
+
+        val adapter = FavoriteAdapter()
+        adapter.submitList(foods)
+        binding.rvFavoriteFood.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: FoodData) {
+                val intent = Intent(this@MainActivity, DetailFoodActivity::class.java)
+                intent.putExtra(DetailFoodActivity.EXTRA_FAV_FOOD_DATA, data)
+                startActivity(intent)
+            }
+
+            override fun onFavoriteClicked(data: FoodData, btnFavorite: ImageButton) {
+                data.name?.let { viewModel.deleteFavorite(it) }
+            }
+
+        })
+    }
+
     private fun setupNewsData() {
 
-        mainViewModel.getInsightData().observe(this) { result ->
+        viewModel.getInsightData().observe(this) { result ->
             when (result) {
                 is Result.Success -> {
                     showLoading(false)
@@ -107,7 +140,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(NewsViewActivity.EXTRA_NEWS_URL, url)
         startActivity(intent)
     }
-
 
     public override fun onStart() {
         super.onStart()
