@@ -1,6 +1,5 @@
 package id.my.nutrikita.data.remote.retrofit
 
-import android.util.Log
 import com.google.gson.GsonBuilder
 import id.my.nutrikita.BuildConfig
 import id.my.nutrikita.data.remote.firebase.FirebaseToken

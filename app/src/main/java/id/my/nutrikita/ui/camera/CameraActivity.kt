@@ -36,12 +36,10 @@ class CameraActivity : AppCompatActivity() {
 
         binding.btnSwitchCamera.setOnClickListener {
             isFlashEnabled = false
-            if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
-                cameraSelector =
-                    CameraSelector.DEFAULT_FRONT_CAMERA
-            }
-            else {
-                cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            cameraSelector = if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
+                CameraSelector.DEFAULT_FRONT_CAMERA
+            } else {
+                CameraSelector.DEFAULT_BACK_CAMERA
             }
             startCamera()
         }
@@ -126,7 +124,8 @@ class CameraActivity : AppCompatActivity() {
                 camera.cameraControl.enableTorch(false)
             }
         } else {
-            Toast.makeText(this, getString(R.string.camera_has_no_flash_unit), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.camera_has_no_flash_unit), Toast.LENGTH_SHORT)
+                .show()
             Log.d(CameraActivity::class.java.simpleName, "setFlashLight: has no flash unit")
         }
     }

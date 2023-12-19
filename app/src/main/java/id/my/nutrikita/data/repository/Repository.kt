@@ -60,11 +60,11 @@ class Repository private constructor(
             val response = mlApiService.foodDetect(multipartBody)
             emit(Result.Success(response))
         } catch (e: HttpException) {
-//            val jsonInString = e.response()?.errorBody()?.string()
-//            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-//            val errorMessage = errorBody.message
-//            Log.d(Repository::class.java.simpleName, "postRegister: ${e.message.toString()}")
-//            emit(Result.Error(errorMessage.toString()))
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            Log.d(Repository::class.java.simpleName, "postRegister: ${e.message.toString()}")
+            emit(Result.Error(errorMessage))
         }
     }
 
@@ -95,7 +95,11 @@ class Repository private constructor(
             val response = mlApiService.customFood(customFoodRequest)
             emit(Result.Success(response))
         } catch (e: HttpException) {
-
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            Log.d(Repository::class.java.simpleName, "postRegister: ${e.message.toString()}")
+            emit(Result.Error(errorMessage))
         }
     }
 
@@ -108,8 +112,6 @@ class Repository private constructor(
     suspend fun setFavoriteFoods(foodData: FoodData) {
         favoriteFoodDao.insert(foodData)
     }
-
-    fun getFavoriteByName(name: String): LiveData<FoodData> = favoriteFoodDao.getFavoriteFoodByName(name)
 
     fun isFoodFavorite(name: String): LiveData<Int> = favoriteFoodDao.isFoodFavoriteByName(name)
 

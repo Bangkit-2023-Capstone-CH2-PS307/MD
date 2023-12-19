@@ -14,8 +14,6 @@ import id.my.nutrikita.ViewModelFactory
 import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
 import id.my.nutrikita.databinding.ActivityDetailFoodBinding
-import id.my.nutrikita.ui.customfood.CustomFoodActivity
-import id.my.nutrikita.ui.customfood.CustomFoodViewModel
 
 class DetailFoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailFoodBinding
@@ -53,8 +51,8 @@ class DetailFoodActivity : AppCompatActivity() {
     private fun setupFoodData(foodData: CustomFoodResponseItem) {
         val listSteps = foodData.recipeInstructions?.split(".,")?.map { it.trim() + "." }
         var isFavorite = false
-        foodData.name?.let {
-            viewModel.isFoodFavorite(it).observe(this) {
+        foodData.name?.let { name ->
+            viewModel.isFoodFavorite(name).observe(this) {
                 isFavorite = it > 0
                 if (isFavorite) {
                     binding.btnFavorite.setImageDrawable(
@@ -74,30 +72,26 @@ class DetailFoodActivity : AppCompatActivity() {
             }
         }
 
-        val favData = foodData.recipeIngredientParts.let { recipeIngredients ->
-            foodData.recipeIngredientQuantities.let { recipeQuantity ->
-                FoodData(
-                    name = foodData.name,
-                    description = foodData.description,
-                    recipeIngredientParts = recipeIngredients,
-                    recipeIngredientQuantities = recipeQuantity,
-                    images = foodData.images,
-                    recipeInstructions = foodData.recipeInstructions,
-                    recipeServings = foodData.recipeServings,
-                    recipeCategory = foodData.recipeCategory,
-                    totalTime = foodData.totalTime,
-                    sugarContent = foodData.sugarContent,
-                    cholesterolContent = foodData.cholesterolContent,
-                    saturatedFatContent = foodData.saturatedFatContent,
-                    proteinContent = foodData.proteinContent,
-                    sodiumContent = foodData.sodiumContent,
-                    calories = foodData.calories,
-                    carbohydrateContent = foodData.carbohydrateContent,
-                    fatContent = foodData.fatContent,
-                    fiberContent = foodData.fiberContent
-                )
-            }
-        }
+        val favData = FoodData(
+            name = foodData.name,
+            description = foodData.description,
+            recipeIngredientParts = foodData.recipeIngredientParts,
+            recipeIngredientQuantities = foodData.recipeIngredientQuantities,
+            images = foodData.images,
+            recipeInstructions = foodData.recipeInstructions,
+            recipeServings = foodData.recipeServings,
+            recipeCategory = foodData.recipeCategory,
+            totalTime = foodData.totalTime,
+            sugarContent = foodData.sugarContent,
+            cholesterolContent = foodData.cholesterolContent,
+            saturatedFatContent = foodData.saturatedFatContent,
+            proteinContent = foodData.proteinContent,
+            sodiumContent = foodData.sodiumContent,
+            calories = foodData.calories,
+            carbohydrateContent = foodData.carbohydrateContent,
+            fatContent = foodData.fatContent,
+            fiberContent = foodData.fiberContent
+        )
 
         binding.tvFoodName.text = foodData.name
         binding.tvDescription.text = foodData.description
@@ -122,8 +116,8 @@ class DetailFoodActivity : AppCompatActivity() {
     private fun setupFavData(favData: FoodData) {
         val listSteps = favData.recipeInstructions?.split(".,")?.map { it.trim() + "." }
         var isFavorite = false
-        favData.name?.let {
-            viewModel.isFoodFavorite(it).observe(this) {
+        favData.name?.let { name ->
+            viewModel.isFoodFavorite(name).observe(this) {
                 isFavorite = it > 0
                 if (isFavorite) {
                     binding.btnFavorite.setImageDrawable(

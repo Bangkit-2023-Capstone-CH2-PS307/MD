@@ -1,6 +1,7 @@
 package id.my.nutrikita.ui.checkfoodnutrition
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -24,7 +25,6 @@ import id.my.nutrikita.databinding.ActivityCheckFoodNutritionBinding
 import id.my.nutrikita.ui.camera.CameraActivity
 import id.my.nutrikita.ui.camera.CameraActivity.Companion.EXTRA_URI_IMAGE
 import id.my.nutrikita.ui.checkfoodresult.CheckFoodResultActivity
-import id.my.nutrikita.ui.main.MainActivity
 import id.my.nutrikita.util.reduceFileImage
 import id.my.nutrikita.util.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
@@ -105,9 +105,12 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
                 is Result.Success -> {
                     showLoading(false)
                     val intent = Intent(this, CheckFoodResultActivity::class.java)
-                    intent.putExtra(CheckFoodResultActivity.EXTRA_CHECK_FOOD_RESULT, result.data.data)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra(
+                        CheckFoodResultActivity.EXTRA_CHECK_FOOD_RESULT,
+                        result.data.data
+                    )
                     startActivity(intent)
+                    resetImage()
                 }
 
                 is Result.Error -> {
@@ -123,6 +126,13 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun resetImage() {
+        binding.ivFoodCheck.setImageDrawable(
+            getDrawable(R.drawable.ic_place_holder)
+        )
     }
 
     private fun showLoading(isLoading: Boolean) {

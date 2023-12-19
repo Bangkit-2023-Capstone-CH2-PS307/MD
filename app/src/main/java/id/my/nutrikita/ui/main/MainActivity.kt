@@ -120,6 +120,12 @@ class MainActivity : AppCompatActivity() {
                     binding.tvInsightsTitle4.text = listNews[3].title
                     binding.tvInsightsTitle5.text = listNews[4].title
 
+                    binding.tvInsightsTitle1.alpha = 1f
+                    binding.tvInsightsTitle2.alpha = 1f
+                    binding.tvInsightsTitle3.alpha = 1f
+                    binding.tvInsightsTitle4.alpha = 1f
+                    binding.tvInsightsTitle5.alpha = 1f
+
                     binding.cvInsights1.setOnClickListener {
 
                     }

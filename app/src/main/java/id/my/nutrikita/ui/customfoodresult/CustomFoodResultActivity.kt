@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -15,8 +14,6 @@ import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
 import id.my.nutrikita.databinding.ActivityCustomFoodResultBinding
 import id.my.nutrikita.ui.detailfood.DetailFoodActivity
-import id.my.nutrikita.ui.detailfood.DetailFoodActivity.Companion.EXTRA_FOOD_DATA
-import id.my.nutrikita.ui.main.MainViewModel
 
 class CustomFoodResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCustomFoodResultBinding
@@ -65,10 +62,11 @@ class CustomFoodResultActivity : AppCompatActivity() {
         foodNames?.let {
 
             for (foodName in it) {
-                viewModel.isFoodFavorite(foodName).observe(this@CustomFoodResultActivity) { number ->
-                    isFavoriteMap[foodName] = number > 0
-                    adapter.setIsFavoriteMap(isFavoriteMap)
-                }
+                viewModel.isFoodFavorite(foodName)
+                    .observe(this@CustomFoodResultActivity) { number ->
+                        isFavoriteMap[foodName] = number > 0
+                        adapter.setIsFavoriteMap(isFavoriteMap)
+                    }
             }
 
         }
@@ -83,7 +81,7 @@ class CustomFoodResultActivity : AppCompatActivity() {
             }
 
             override fun onFavoriteClicked(data: CustomFoodResponseItem, btnFavorite: ImageButton) {
-                val foodData = FoodData(
+                val food = FoodData(
                     name = data.name,
                     description = data.description,
                     recipeIngredientParts = data.recipeIngredientParts,
@@ -126,15 +124,16 @@ class CustomFoodResultActivity : AppCompatActivity() {
                                 R.drawable.baseline_favorite_24
                             )
                         )
-                        viewModel.saveFavoriteFood(foodData)
+                        viewModel.saveFavoriteFood(food)
                     }
 
-                    isFavoriteMap[data.name ?: ""] = !isFavorite
+                    isFavoriteMap[data.name] = !isFavorite
                 }
 
             }
         })
     }
+
     companion object {
         const val EXTRA_FOOD_DATA = "food_data"
     }

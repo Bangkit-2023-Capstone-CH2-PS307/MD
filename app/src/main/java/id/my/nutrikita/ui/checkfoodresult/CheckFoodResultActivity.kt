@@ -1,6 +1,5 @@
 package id.my.nutrikita.ui.checkfoodresult
 
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,6 @@ import id.my.nutrikita.BuildConfig
 import id.my.nutrikita.R
 import id.my.nutrikita.data.remote.response.Data
 import id.my.nutrikita.databinding.ActivityCheckFoodResultBinding
-import id.my.nutrikita.ui.main.MainActivity
 import java.util.Locale
 
 class CheckFoodResultActivity : AppCompatActivity() {
@@ -29,9 +27,7 @@ class CheckFoodResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnArrowBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+            onBackPressedDispatcher.onBackPressed()
         }
         setRecyclerView()
         setResult()
@@ -53,7 +49,7 @@ class CheckFoodResultActivity : AppCompatActivity() {
         binding.tvFoodName.text = result?.prediction
         binding.tvTriviaContent.text = result?.description
         Glide.with(this)
-            .load(BuildConfig.ML_URL+result?.imageUrl)
+            .load(BuildConfig.ML_URL + result?.imageUrl)
             .apply(RequestOptions.bitmapTransform(CircleCrop()))
             .into(binding.ivFoodResult)
 
@@ -88,7 +84,8 @@ class CheckFoodResultActivity : AppCompatActivity() {
                     dataCell.text = cellData
                     dataCell.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                     dataCell.setPadding(16, 8, 16, 8)
-                    val customFont: Typeface? = ResourcesCompat.getFont(this, R.font.poppins_regular)
+                    val customFont: Typeface? =
+                        ResourcesCompat.getFont(this, R.font.poppins_regular)
                     dataCell.typeface = customFont
 
                     dataRow.addView(dataCell)

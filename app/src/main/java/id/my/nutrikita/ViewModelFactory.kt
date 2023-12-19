@@ -19,23 +19,17 @@ class ViewModelFactory private constructor(private val repository: Repository) :
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
             return RegisterViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(CheckFoodNutritionViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(CheckFoodNutritionViewModel::class.java)) {
             return CheckFoodNutritionViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(CustomFoodViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(CustomFoodViewModel::class.java)) {
             return CustomFoodViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(CustomFoodResultViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(CustomFoodResultViewModel::class.java)) {
             return CustomFoodResultViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(DetailFoodViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(DetailFoodViewModel::class.java)) {
             return DetailFoodViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(FavoriteFoodViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(FavoriteFoodViewModel::class.java)) {
             return FavoriteFoodViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

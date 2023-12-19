@@ -1,6 +1,5 @@
 package id.my.nutrikita.ui.favorite
 
-import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.my.nutrikita.R
 import id.my.nutrikita.data.local.entity.FoodData
-import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
 import id.my.nutrikita.databinding.FavoriteItemBinding
-import id.my.nutrikita.databinding.ItemResultBinding
 
 class FavoriteAdapter :
     ListAdapter<FoodData, FavoriteAdapter.FavoriteViewHolder>(DIFF_CALLBACK) {

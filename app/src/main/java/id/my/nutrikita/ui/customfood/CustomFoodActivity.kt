@@ -11,11 +11,7 @@ import id.my.nutrikita.R
 import id.my.nutrikita.ViewModelFactory
 import id.my.nutrikita.data.remote.Result
 import id.my.nutrikita.databinding.ActivityCustomFoodBinding
-import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionActivity
-import id.my.nutrikita.ui.checkfoodnutrition.CheckFoodNutritionViewModel
-import id.my.nutrikita.ui.checkfoodresult.CheckFoodResultActivity
 import id.my.nutrikita.ui.customfoodresult.CustomFoodResultActivity
-import id.my.nutrikita.ui.main.MainActivity
 
 class CustomFoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCustomFoodBinding
@@ -54,13 +50,26 @@ class CustomFoodActivity : AppCompatActivity() {
             val sugarValue = binding.sbSugar.progress
             val proteinValue = binding.sbProtein.progress
 
-            viewModel.postCustomFood(caloriesValue, fatValue, saturatedFatValue, cholesterolValue, sodiumValue, carbohydrateValue, fiberValue, sugarValue, proteinValue).observe(this) { result ->
+            viewModel.postCustomFood(
+                caloriesValue,
+                fatValue,
+                saturatedFatValue,
+                cholesterolValue,
+                sodiumValue,
+                carbohydrateValue,
+                fiberValue,
+                sugarValue,
+                proteinValue
+            ).observe(this) { result ->
                 when (result) {
                     is Result.Success -> {
                         showLoading(false)
                         seekbarEnabled(true)
                         val intent = Intent(this, CustomFoodResultActivity::class.java)
-                        intent.putExtra(CustomFoodResultActivity.EXTRA_FOOD_DATA, ArrayList(result.data))
+                        intent.putExtra(
+                            CustomFoodResultActivity.EXTRA_FOOD_DATA,
+                            ArrayList(result.data)
+                        )
                         startActivity(intent)
                     }
 
@@ -106,7 +115,7 @@ class CustomFoodActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    private fun seekbarEnabled(isEnabled : Boolean) {
+    private fun seekbarEnabled(isEnabled: Boolean) {
         binding.sbCalories.isEnabled = isEnabled
         binding.sbFat.isEnabled = isEnabled
         binding.sbSaturatedFat.isEnabled = isEnabled

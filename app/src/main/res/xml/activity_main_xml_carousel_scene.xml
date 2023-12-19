@@ -302,5 +302,9 @@
         motion:constraintSetStart="@+id/slide5"
         motion:constraintSetEnd="@+id/start"
         motion:autoTransition="animateToEnd"
-        motion:duration="6000"/>
+        motion:duration="6000">
+        <OnSwipe
+            motion:autoCompleteMode="continuousVelocity"
+            motion:dragDirection="dragLeft" />
+    </Transition>
 </MotionScene>

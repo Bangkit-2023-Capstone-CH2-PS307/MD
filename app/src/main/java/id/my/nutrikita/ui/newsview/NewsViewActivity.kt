@@ -11,6 +11,7 @@ import id.my.nutrikita.databinding.ActivityNewsViewBinding
 
 class NewsViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewsViewBinding
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,10 @@ class NewsViewActivity : AppCompatActivity() {
         webView.settings.javaScriptEnabled = true
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
-                Toast.makeText(this@NewsViewActivity,
-                    getString(R.string.web_success_announce), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this@NewsViewActivity,
+                    getString(R.string.web_success_announce), Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

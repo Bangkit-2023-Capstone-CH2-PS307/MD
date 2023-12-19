@@ -5,11 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.Result
-import id.my.nutrikita.data.remote.response.FoodDetectResponse
 import id.my.nutrikita.data.remote.response.NewsResponse
 import id.my.nutrikita.data.repository.Repository
 import kotlinx.coroutines.launch
-import okhttp3.MultipartBody
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
     fun getInsightData(

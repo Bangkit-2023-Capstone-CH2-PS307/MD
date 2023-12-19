@@ -22,7 +22,8 @@ class NutritionsAdapter :
         parent: ViewGroup,
         viewType: Int
     ): NutritionsViewHolder {
-        val binding = ItemNutritionsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemNutritionsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NutritionsViewHolder(binding)
     }
 

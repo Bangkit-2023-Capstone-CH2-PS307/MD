@@ -8,13 +8,13 @@ import id.my.nutrikita.data.repository.Repository
 import kotlinx.coroutines.launch
 
 class DetailFoodViewModel(private val repository: Repository) : ViewModel() {
-    fun saveFavoriteFood(food: FoodData){
+    fun saveFavoriteFood(food: FoodData) {
         viewModelScope.launch {
             repository.setFavoriteFoods(food)
         }
     }
 
-    fun deleteFavorite(name: String){
+    fun deleteFavorite(name: String) {
         viewModelScope.launch {
             repository.deleteFavoriteFoodsById(name)
         }
