@@ -61,24 +61,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupFavoriteFoodData(foodData: List<FoodData>) {
-        val foods = foodData.take(5)
+        if (foodData.isNotEmpty()) {
+            binding.tvEmptyFavorite.visibility = View.GONE
+            binding.ivKitten.visibility = View.GONE
+            binding.rvFavoriteFood.visibility = View.VISIBLE
+            val foods = foodData.take(5)
 
-        val adapter = FavoriteAdapter()
-        adapter.submitList(foods)
-        binding.rvFavoriteFood.adapter = adapter
+            val adapter = FavoriteAdapter()
+            adapter.submitList(foods)
+            binding.rvFavoriteFood.adapter = adapter
 
-        adapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: FoodData) {
-                val intent = Intent(this@MainActivity, DetailFoodActivity::class.java)
-                intent.putExtra(DetailFoodActivity.EXTRA_FAV_FOOD_DATA, data)
-                startActivity(intent)
-            }
+            adapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: FoodData) {
+                    val intent = Intent(this@MainActivity, DetailFoodActivity::class.java)
+                    intent.putExtra(DetailFoodActivity.EXTRA_FAV_FOOD_DATA, data)
+                    startActivity(intent)
+                }
 
-            override fun onFavoriteClicked(data: FoodData, btnFavorite: ImageButton) {
-                data.name?.let { viewModel.deleteFavorite(it) }
-            }
+                override fun onFavoriteClicked(data: FoodData, btnFavorite: ImageButton) {
+                    data.name?.let { viewModel.deleteFavorite(it) }
+                }
 
-        })
+            })
+        } else {
+            binding.tvEmptyFavorite.visibility = View.VISIBLE
+            binding.rvFavoriteFood.visibility = View.GONE
+            binding.ivKitten.visibility = View.VISIBLE
+        }
     }
 
     private fun setupNewsData() {

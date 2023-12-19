@@ -113,20 +113,8 @@ class DetailFoodActivity : AppCompatActivity() {
         binding.btnFavorite.setOnClickListener {
             if (isFavorite) {
                 foodData.name?.let { name -> viewModel.deleteFavorite(name) }
-//                binding.btnFavorite.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        binding.btnFavorite.context,
-//                        R.drawable.baseline_favorite_border_24
-//                    )
-//                )
             } else {
                 viewModel.saveFavoriteFood(favData)
-//                binding.btnFavorite.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        binding.btnFavorite.context,
-//                        R.drawable.baseline_favorite_24
-//                    )
-//                )
             }
         }
     }

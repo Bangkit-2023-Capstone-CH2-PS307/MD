@@ -506,14 +506,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="46dp"
+            android:layout_marginTop="70dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/empty_favorite"
             android:textAlignment="center"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFavoriteFoodTitle" />
+
+        <ImageView
+            android:id="@+id/iv_kitten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_kitten"
+            app:layout_constraintTop_toBottomOf="@id/tvFavoriteFoodTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="70dp"
+            android:visibility="gone"
+            android:layout_marginTop="5dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
