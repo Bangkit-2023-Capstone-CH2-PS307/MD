@@ -29,6 +29,7 @@ class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
     private var isFlashEnabled = false
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
@@ -36,6 +37,7 @@ class CameraActivity : AppCompatActivity() {
 
         binding.btnSwitchCamera.setOnClickListener {
             isFlashEnabled = false
+            binding.btnFlashlight.setImageDrawable(getDrawable(R.drawable.baseline_flash_on_24))
             cameraSelector = if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
                 CameraSelector.DEFAULT_FRONT_CAMERA
             } else {
@@ -93,7 +95,9 @@ class CameraActivity : AppCompatActivity() {
             outputOptions,
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
+                @SuppressLint("UseCompatLoadingForDrawables")
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    binding.btnFlashlight.setImageDrawable(getDrawable(R.drawable.baseline_flash_on_24))
                     val intent = Intent(this@CameraActivity, CheckFoodNutritionActivity::class.java)
                     intent.putExtra(EXTRA_URI_IMAGE, output.savedUri.toString())
                     startActivity(intent)

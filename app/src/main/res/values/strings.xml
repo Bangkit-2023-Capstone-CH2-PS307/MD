@@ -102,4 +102,5 @@
     <string name="custom_food_icon">Custom Food Icon</string>
     <string name="check_food_nutrition_icon">Check Food Nutrition Icon</string>
     <string name="description">Description</string>
+    <string name="nutrikita">NutriKita</string>
 </resources>

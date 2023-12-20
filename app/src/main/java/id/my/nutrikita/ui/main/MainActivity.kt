@@ -30,6 +30,8 @@ import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
 import id.my.nutrikita.ui.newsview.NewsViewActivity
 import android.app.AlertDialog
+import android.view.ViewTreeObserver
+import id.my.nutrikita.ui.splashscreen.SplashScreenActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -47,12 +49,30 @@ class MainActivity : AppCompatActivity() {
 
         setupView()
         setupFavoriteRecyclerView()
+        setBindingView()
+        setupNewsData()
 
         viewModel.getAllFavoriteFood().observe(this) {
             setupFavoriteFoodData(it)
         }
-        setBindingView()
-        setupNewsData()
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[MainViewModel::class.java]
+    }
+
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
     }
 
     private fun setupFavoriteRecyclerView() {
@@ -94,7 +114,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNewsData() {
-
         viewModel.getInsightData().observe(this) { result ->
             when (result) {
                 is Result.Success -> {
@@ -159,34 +178,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-            finish()
-        }
-    }
-
-    private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
-        val factory = ViewModelFactory.getInstance(activity.application)
-        return ViewModelProvider(activity, factory)[MainViewModel::class.java]
-    }
-
-    private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
-    }
-
     private fun setBindingView() {
         val user = auth.currentUser
         binding.ibLogout.setOnClickListener {
@@ -237,6 +228,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, LoginActivity::class.java))
         finish()
     }
-
-
 }
