@@ -1,9 +1,12 @@
 package id.my.nutrikita.ui.favorite
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.ImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -30,6 +33,7 @@ class FavoriteFoodActivity : AppCompatActivity() {
         }
 
         setRecyclerView()
+        setupView()
 
         viewModel.getAllFavoriteFood().observe(this) {
             setupFavoriteFoodData(it)
@@ -82,5 +86,18 @@ class FavoriteFoodActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
     }
 }

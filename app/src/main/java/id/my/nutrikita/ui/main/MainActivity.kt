@@ -1,5 +1,6 @@
 package id.my.nutrikita.ui.main
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,7 @@ import id.my.nutrikita.ui.favorite.FavoriteAdapter
 import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
 import id.my.nutrikita.ui.newsview.NewsViewActivity
+import android.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -187,7 +190,7 @@ class MainActivity : AppCompatActivity() {
     private fun setBindingView() {
         val user = auth.currentUser
         binding.ibLogout.setOnClickListener {
-            logout()
+            showLogoutDialog()
         }
         binding.tvHomeTitle.text = getString(R.string.home_title, user?.displayName)
         binding.cvCustomFood.setOnClickListener {
@@ -199,6 +202,30 @@ class MainActivity : AppCompatActivity() {
         binding.cvCheckFoodNutrition.setOnClickListener {
             startActivity(Intent(this, CheckFoodNutritionActivity::class.java))
         }
+    }
+
+    private fun showLogoutDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.logout))
+        builder.setMessage(getString(R.string.logout_message))
+        builder.setPositiveButton(getString(R.string.yes)) { _: DialogInterface, _: Int ->
+            logout()
+        }
+        builder.setNegativeButton(getString(R.string.no)) { dialog: DialogInterface, _: Int ->
+            dialog.dismiss()
+        }
+
+        val alertDialog = builder.create()
+        alertDialog.setOnShowListener {
+            alertDialog.findViewById<TextView>(android.R.id.message)?.setTextAppearance(
+                R.style.DialogTextStyle
+            )
+            alertDialog.findViewById<TextView>(android.R.id.title)?.setTextAppearance(
+                R.style.DialogTextStyle
+            )
+        }
+
+        alertDialog.show()
     }
 
     private fun showLoading(isLoading: Boolean) {

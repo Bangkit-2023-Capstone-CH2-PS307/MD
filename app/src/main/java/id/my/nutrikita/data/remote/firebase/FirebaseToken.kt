@@ -10,7 +10,7 @@ object FirebaseToken {
     fun getToken(): String {
         val auth: FirebaseAuth = Firebase.auth
         val user = auth.currentUser
-        var token = ""
+        var token: String
 
         val future = CompletableFuture<String>()
 

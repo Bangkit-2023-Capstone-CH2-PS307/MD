@@ -5,6 +5,8 @@ import android.content.res.Configuration
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +31,7 @@ class CustomFoodResultActivity : AppCompatActivity() {
 
         setRecyclerView()
         setFoodsData()
+        setupView()
 
         binding.btnArrowBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -38,6 +41,19 @@ class CustomFoodResultActivity : AppCompatActivity() {
     private fun obtainViewModel(activity: AppCompatActivity): CustomFoodResultViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProvider(activity, factory)[CustomFoodResultViewModel::class.java]
+    }
+
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
     }
 
     private fun setRecyclerView() {

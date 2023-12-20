@@ -99,10 +99,14 @@
             android:layout_height="wrap_content"
             android:alpha="0"
             android:clickable="true"
+            android:background="@color/transparent"
+            android:textColor="@color/black"
             android:focusable="true"
+            android:layout_marginTop="100dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/get_result"
             android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/btnGallery"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

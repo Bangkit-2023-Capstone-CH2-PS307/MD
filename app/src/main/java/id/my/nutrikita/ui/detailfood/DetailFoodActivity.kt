@@ -4,6 +4,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -26,6 +28,7 @@ class DetailFoodActivity : AppCompatActivity() {
 
         viewModel = obtainViewModel(this)
 
+        setupView()
         binding.btnArrowBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
@@ -172,6 +175,19 @@ class DetailFoodActivity : AppCompatActivity() {
             }
         }
         return builder
+    }
+
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
     }
 
     companion object {
