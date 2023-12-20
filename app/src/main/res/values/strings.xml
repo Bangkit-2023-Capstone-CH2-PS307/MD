@@ -8,6 +8,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="switchToLogin">Already have an account?</string>
+    <string name="error_confirm_password">Confirm Password not equal to Password</string>
 
     <string name="login">Login</string>
     <string name="hint_name">Dummy Setiawan</string>
@@ -17,6 +18,7 @@
     <string name="switchToRegister">Don’t have an account?</string>
     <string name="hint_email">dummy@gmail.com</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="login_success">Login success</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -27,45 +29,13 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
-    <string name="Google">Google</string>
-    <string name="or_with">Or With</string>
-    <string name="home_title">Halo, %1$s</string>
-    <string name="home_subtitle">Selalu makan sehat agar tubuh kuat</string>
-    <string name="cek_informasi_makanan">Cek Informasi Makanan</string>
-    <string name="cek_status_gizi">Cek Status Gizi Anak</string>
-    <string name="coming_soon">Coming Soon</string>
-    <string name="foodscan_history">Food Scan History</string>
-    <string name="telur">telur</string>
-    <string name="food_desc">This Fruit Soup may use jelly which is diced as well to add flavor and crowd to the Fruit Soup. I didn\'t have time to make the jelly, so I didn\'t use it</string>
-    <string name="foodcheck">Food Check</string>
-    <string name="food_check_title">What to Eat Today?</string>
-    <string name="Camera">Camera</string>
-    <string name="Gallery">Gallery</string>
-    <string name="find_nutrient_details">Find Nutrient Details</string>
-    <string name="find_quality_details">Find Quality Details</string>
-    <string name="choose_one">Choose one:</string>
-    <string name="pisang">Pisang</string>
-    <string name="nutrition">Nutrition</string>
-    <string name="vitamin_a">Vitamin A</string>
-    <string name="nutrition_status">Nutrition Status</string>
-    <string name="name_dummy">Dummy Ipsum</string>
-    <string name="detail_nutritional_status">Detail Nutritional Status</string>
-    <string name="stunting_status">Stunting Status</string>
-    <string name="stunting">Stunting</string>
-    <string name="butuh_tindakan_medis_bawa_ke_puskesmas_terdekat">Butuh tindakan medis, bawa ke puskesmas terdekat</string>
-    <string name="name">Name</string>
-    <string name="age">Age</string>
-    <string name="height">Height</string>
-    <string name="weight">Weight</string>
-    <string name="custom_food">Custom Food</string>
-    <string name="news_title">Nutrikita News Corner</string>
-    <string name="favorite_foods">Favorite Foods</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
-    <string name="food_name">Food Name</string>
-    <string name="fav_food_description">Favorite Food Description</string>
+    <!--    main activity    -->
+    <string name="home_title">Hello, %1$s</string>
+    <string name="home_subtitle">Healthy Moms, Healthy Baby</string>
+    <string name="logout">Logout</string>
 
     <!--    custom food activity    -->
+    <string name="custom_food">Custom Food</string>
     <string name="calories">Calories</string>
     <string name="fat">Fat</string>
     <string name="saturated_fat">Saturated Fat</string>
@@ -86,28 +56,50 @@
     <string name="protein_quantity">%1$s/200</string>
     <string name="get_meals_suggestion">Get Meals Suggestion</string>
 
+    <!--    custom food result activity    -->
     <string name="custom_food_result">Custom Food Result</string>
-    <string name="search_result">Search Result</string>
-    <string name="oatmeals">Oatmeals</string>
     <string name="ingredients">Ingredients</string>
     <string name="steps">Steps</string>
-    <string name="nutritional_values">Nutritional Values</string>
-    <string name="error_confirm_password">Confirm Password not equal to Password</string>
-    <string name="response_data_is_empty">Response data is empty</string>
-    <string name="login_success">Login success</string>
+
+    <!--    check food nutrition activity    -->
     <string name="check_food_nutrition">Check Food Nutrition</string>
-    <string name="custom_food_icon">Custom Food Icon</string>
-    <string name="check_food_nutrition_icon">Check Food Nutrition Icon</string>
+    <string name="food_check_title">What to Eat Today?</string>
+    <string name="Camera">Camera</string>
+    <string name="Gallery">Gallery</string>
+    <string name="get_result"><![CDATA[Get Result >]]></string>
     <string name="permission_request_granted">Permission request granted</string>
     <string name="rejected_permission">Permission request denied</string>
+
+    <!--    camera activity    -->
     <string name="cannot_show_camera">Cannot show camera.</string>
     <string name="camera_has_no_flash_unit">Camera has no flash unit</string>
     <string name="cannot_take_a_photo">Cannot take a photo.</string>
-    <string name="get_result"><![CDATA[Get Result >]]></string>
-    <string name="description">Description</string>
+
+    <!--    check food result activity    -->
     <string name="trivia">Trivia</string>
     <string name="nutritions">Nutritions</string>
+    <string name="nutritional_values">Nutritional Values</string>
+
+    <!--    news view activity    -->
     <string name="web_success_announce">The web has been successfully loaded</string>
     <string name="nutrikita_insights_corner">Nutrikita Insights Corner</string>
-    <string name="logout">Logout</string>
+
+    <!--    favorite foods activity    -->
+    <string name="favorite_foods">Favorite Foods</string>
+    <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
+
+    <!--    dummies    -->
+    <string name="telur">telur</string>
+    <string name="food_desc">This Fruit Soup may use jelly which is diced as well to add flavor and crowd to the Fruit Soup. I didn\'t have time to make the jelly, so I didn\'t use it</string>
+    <string name="pisang">Pisang</string>
+    <string name="vitamin_a">Vitamin A</string>
+    <string name="name_dummy">Dummy Ipsum</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="food_name">Food Name</string>
+    <string name="fav_food_description">Favorite Food Description</string>
+    <string name="oatmeals">Oatmeals</string>
+    <string name="response_data_is_empty">Response data is empty</string>
+    <string name="custom_food_icon">Custom Food Icon</string>
+    <string name="check_food_nutrition_icon">Check Food Nutrition Icon</string>
+    <string name="description">Description</string>
 </resources>
