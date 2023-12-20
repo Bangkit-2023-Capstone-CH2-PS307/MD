@@ -3,6 +3,7 @@ package id.my.nutrikita.ui.newsview
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
@@ -23,10 +24,12 @@ class NewsViewActivity : AppCompatActivity() {
         val webView = binding.webView
         if (url != null) {
             webView.loadUrl(url)
+            binding.progressBar.visibility = View.VISIBLE
         }
         webView.settings.javaScriptEnabled = true
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
+                binding.progressBar.visibility = View.GONE
                 Toast.makeText(
                     this@NewsViewActivity,
                     getString(R.string.web_success_announce), Toast.LENGTH_LONG

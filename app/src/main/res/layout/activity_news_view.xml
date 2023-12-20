@@ -4,23 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".ui.newsview.NewsViewActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="2dp"
-        android:fontFamily="@font/poppins_regular"
-        android:padding="12dp"
-        android:text="@string/news_title"
-        android:background="@color/primary"
-        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="3dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nutrikita_insights_corner"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_medium"/>
 
     <WebView
         android:id="@+id/webView"
         android:layout_width="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/background_news_webview"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

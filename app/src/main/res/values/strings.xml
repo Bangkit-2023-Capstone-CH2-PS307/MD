@@ -137,4 +137,5 @@
     <string name="trivia">Trivia</string>
     <string name="nutritions">Nutritions</string>
     <string name="web_success_announce">The web has been successfully loaded</string>
+    <string name="nutrikita_insights_corner">Nutrikita Insights Corner</string>
 </resources>
