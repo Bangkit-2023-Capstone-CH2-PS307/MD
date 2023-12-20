@@ -1,5 +1,6 @@
 package id.my.nutrikita.ui.checkfoodresult
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -16,6 +19,7 @@ import id.my.nutrikita.BuildConfig
 import id.my.nutrikita.R
 import id.my.nutrikita.data.remote.response.Data
 import id.my.nutrikita.databinding.ActivityCheckFoodResultBinding
+import id.my.nutrikita.ui.main.MainActivity
 import java.util.Locale
 
 class CheckFoodResultActivity : AppCompatActivity() {
@@ -25,6 +29,16 @@ class CheckFoodResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckFoodResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val intent = Intent(this@CheckFoodResultActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
 
         binding.btnArrowBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

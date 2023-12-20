@@ -38,8 +38,6 @@ class CustomFoodActivity : AppCompatActivity() {
         }
 
         binding.btnGetMealsSugesstion.setOnClickListener {
-            seekbarEnabled(false)
-
             val caloriesValue = binding.sbCalories.progress
             val fatValue = binding.sbFat.progress
             val saturatedFatValue = binding.sbSaturatedFat.progress
@@ -64,13 +62,14 @@ class CustomFoodActivity : AppCompatActivity() {
                 when (result) {
                     is Result.Success -> {
                         showLoading(false)
-                        seekbarEnabled(true)
                         val intent = Intent(this, CustomFoodResultActivity::class.java)
                         intent.putExtra(
                             CustomFoodResultActivity.EXTRA_FOOD_DATA,
                             ArrayList(result.data)
                         )
                         startActivity(intent)
+                        binding.btnGetMealsSugesstion.isEnabled = true
+                        seekbarEnabled(true)
                     }
 
                     is Result.Error -> {
@@ -82,6 +81,8 @@ class CustomFoodActivity : AppCompatActivity() {
                     }
 
                     is Result.Loading -> {
+                        seekbarEnabled(false)
+                        binding.btnGetMealsSugesstion.isEnabled = false
                         showLoading(true)
                     }
                 }

@@ -1,7 +1,6 @@
 package id.my.nutrikita.ui.checkfoodnutrition
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -110,7 +109,6 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
                         result.data.data
                     )
                     startActivity(intent)
-                    resetImage()
                 }
 
                 is Result.Error -> {
@@ -122,17 +120,13 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
                 }
 
                 is Result.Loading -> {
+                    binding.btnGetResult.isEnabled = false
+                    binding.btnGallery.isEnabled = false
+                    binding.btnCamera.isEnabled = false
                     showLoading(true)
                 }
             }
         }
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun resetImage() {
-        binding.ivFoodCheck.setImageDrawable(
-            getDrawable(R.drawable.ic_place_holder)
-        )
     }
 
     private fun showLoading(isLoading: Boolean) {

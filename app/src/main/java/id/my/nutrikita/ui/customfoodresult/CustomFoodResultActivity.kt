@@ -1,6 +1,7 @@
 package id.my.nutrikita.ui.customfoodresult
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,7 +41,11 @@ class CustomFoodResultActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView() {
-        val layoutManger = GridLayoutManager(this, 2)
+        val layoutManger =
+            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) GridLayoutManager(
+                this,
+                5
+            ) else GridLayoutManager(this, 2)
         binding.rvFoodResultItem.layoutManager = layoutManger
         binding.rvFoodResultItem.setHasFixedSize(true)
     }
