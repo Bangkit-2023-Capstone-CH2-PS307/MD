@@ -9,6 +9,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import id.my.nutrikita.R
 import id.my.nutrikita.ViewModelFactory
@@ -90,6 +91,8 @@ class CustomFoodActivity : AppCompatActivity() {
                     }
 
                     is Result.Error -> {
+                        Toast.makeText(this, result.error, Toast.LENGTH_SHORT)
+                            .show()
                         showLoading(false)
                     }
 

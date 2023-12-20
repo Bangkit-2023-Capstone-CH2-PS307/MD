@@ -112,6 +112,8 @@ class CheckFoodNutritionActivity : AppCompatActivity() {
                 }
 
                 is Result.Error -> {
+                    Toast.makeText(this, result.error, Toast.LENGTH_SHORT)
+                        .show()
                     showLoading(false)
                 }
 
