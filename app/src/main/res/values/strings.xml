@@ -19,6 +19,8 @@
     <string name="hint_email">dummy@gmail.com</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="login_success">Login success</string>
+    <string name="empty_email">Email should not be empty</string>
+    <string name="empty_password">Password should not be empty</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -88,6 +90,9 @@
     <string name="favorite_foods">Favorite Foods</string>
     <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
 
+    <!--    splash screen activity    -->
+    <string name="nutrikita">NutriKita</string>
+
     <!--    dummies    -->
     <string name="telur">telur</string>
     <string name="food_desc">This Fruit Soup may use jelly which is diced as well to add flavor and crowd to the Fruit Soup. I didn\'t have time to make the jelly, so I didn\'t use it</string>
@@ -102,5 +107,5 @@
     <string name="custom_food_icon">Custom Food Icon</string>
     <string name="check_food_nutrition_icon">Check Food Nutrition Icon</string>
     <string name="description">Description</string>
-    <string name="nutrikita">NutriKita</string>
+
 </resources>

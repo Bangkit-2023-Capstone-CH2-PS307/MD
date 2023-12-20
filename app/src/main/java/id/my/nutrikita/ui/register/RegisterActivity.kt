@@ -1,6 +1,9 @@
 package id.my.nutrikita.ui.register
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,7 +40,11 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.registerButton.setOnClickListener {
-            onRegisterButtonClicked()
+            if (isNetworkAvailable(this)) {
+                onRegisterButtonClicked()
+            } else {
+                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+            }
         }
 
         setupView()
@@ -99,6 +106,16 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val network = connectivityManager.activeNetwork
+        val capabilities = connectivityManager.getNetworkCapabilities(network)
+        return capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET))
     }
 
     private fun setupView() {
