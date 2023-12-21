@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,6 +18,7 @@ import id.my.nutrikita.data.local.entity.FoodData
 import id.my.nutrikita.data.remote.response.CustomFoodResponseItem
 import id.my.nutrikita.databinding.ActivityCustomFoodResultBinding
 import id.my.nutrikita.ui.detailfood.DetailFoodActivity
+import id.my.nutrikita.ui.main.MainActivity
 
 class CustomFoodResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCustomFoodResultBinding
@@ -32,6 +34,16 @@ class CustomFoodResultActivity : AppCompatActivity() {
         setRecyclerView()
         setFoodsData()
         setupView()
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val intent = Intent(this@CustomFoodResultActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
 
         binding.btnArrowBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

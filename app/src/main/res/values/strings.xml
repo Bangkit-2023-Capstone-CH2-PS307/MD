@@ -33,7 +33,7 @@
 
     <!--    main activity    -->
     <string name="home_title">Hello, %1$s</string>
-    <string name="home_subtitle">Healthy Moms, Healthy Baby</string>
+    <string name="home_subtitle">Find, track, and eat healthy food.</string>
     <string name="logout">Logout</string>
 
     <!--    custom food activity    -->
