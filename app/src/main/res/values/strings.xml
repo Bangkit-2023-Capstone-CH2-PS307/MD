@@ -90,9 +90,6 @@
     <string name="favorite_foods">Favorite Foods</string>
     <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
 
-    <!--    splash screen activity    -->
-    <string name="nutrikita">NutriKita</string>
-
     <!--    dummies    -->
     <string name="telur">telur</string>
     <string name="food_desc">This Fruit Soup may use jelly which is diced as well to add flavor and crowd to the Fruit Soup. I didn\'t have time to make the jelly, so I didn\'t use it</string>
