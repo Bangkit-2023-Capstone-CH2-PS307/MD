@@ -25,7 +25,7 @@
             android:id="@+id/tvFoodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/pisang"
             android:textSize="18sp"

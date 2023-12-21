@@ -58,18 +58,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="2000"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCalories"
-            android:max="2000"/>
+            app:layout_constraintTop_toBottomOf="@id/tvCalories" />
 
         <TextView
             android:id="@+id/quantityCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calories_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/calories_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbCalories"/>
+            app:layout_constraintTop_toBottomOf="@id/sbCalories" />
 
         <TextView
             android:id="@+id/tvFat"
@@ -86,18 +88,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="100"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFat"
-            android:max="100"/>
+            app:layout_constraintTop_toBottomOf="@id/tvFat" />
 
         <TextView
             android:id="@+id/quantityFat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fat_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/fat_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbFat"/>
+            app:layout_constraintTop_toBottomOf="@id/sbFat" />
 
         <TextView
             android:id="@+id/tvSaturatedFat"
@@ -114,18 +118,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="13"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSaturatedFat"
-            android:max="13"/>
+            app:layout_constraintTop_toBottomOf="@id/tvSaturatedFat" />
 
         <TextView
             android:id="@+id/quantitySaturatedFat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/saturatedfat_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/saturatedfat_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbSaturatedFat"/>
+            app:layout_constraintTop_toBottomOf="@id/sbSaturatedFat" />
 
         <TextView
             android:id="@+id/tvCholesterol"
@@ -142,18 +148,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="300"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCholesterol"
-            android:max="300"/>
+            app:layout_constraintTop_toBottomOf="@id/tvCholesterol" />
 
         <TextView
             android:id="@+id/quantityCholesterol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cholesterol_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/cholesterol_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbCholesterol"/>
+            app:layout_constraintTop_toBottomOf="@id/sbCholesterol" />
 
         <TextView
             android:id="@+id/tvSodium"
@@ -170,18 +178,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="2300"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSodium"
-            android:max="2300"/>
+            app:layout_constraintTop_toBottomOf="@id/tvSodium" />
 
         <TextView
             android:id="@+id/quantitySodium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sodium_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/sodium_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbSodium"/>
+            app:layout_constraintTop_toBottomOf="@id/sbSodium" />
 
         <TextView
             android:id="@+id/tvCarbohydrate"
@@ -198,18 +208,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="325"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCarbohydrate"
-            android:max="325"/>
+            app:layout_constraintTop_toBottomOf="@id/tvCarbohydrate" />
 
         <TextView
             android:id="@+id/quantityCarbohydrate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carbohydrate_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/carbohydrate_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbCarbohydrate"/>
+            app:layout_constraintTop_toBottomOf="@id/sbCarbohydrate" />
 
         <TextView
             android:id="@+id/tvFiber"
@@ -226,18 +238,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="40"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFiber"
-            android:max="40"/>
+            app:layout_constraintTop_toBottomOf="@id/tvFiber" />
 
         <TextView
             android:id="@+id/quantityFiber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fiber_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/fiber_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbFiber"/>
+            app:layout_constraintTop_toBottomOf="@id/sbFiber" />
 
         <TextView
             android:id="@+id/tvSugar"
@@ -254,18 +268,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="40"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSugar"
-            android:max="40"/>
+            app:layout_constraintTop_toBottomOf="@id/tvSugar" />
 
         <TextView
             android:id="@+id/quantitySugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sugar_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/sugar_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbSugar"/>
+            app:layout_constraintTop_toBottomOf="@id/sbSugar" />
 
         <TextView
             android:id="@+id/tvProtein"
@@ -282,28 +298,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:max="200"
+            android:progressTint="@color/primary"
+            android:thumbTint="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProtein"
-            android:max="200"/>
+            app:layout_constraintTop_toBottomOf="@id/tvProtein" />
 
         <TextView
             android:id="@+id/quantityProtein"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/protein_quantity"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/protein_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sbProtein"/>
+            app:layout_constraintTop_toBottomOf="@id/sbProtein" />
 
         <Button
             android:id="@+id/btnGetMealsSugesstion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/quantityProtein"
             android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/get_meals_suggestion"
-            android:fontFamily="@font/poppins_semibold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/quantityProtein" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

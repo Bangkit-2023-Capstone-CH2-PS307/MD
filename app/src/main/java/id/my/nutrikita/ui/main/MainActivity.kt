@@ -30,8 +30,6 @@ import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
 import id.my.nutrikita.ui.newsview.NewsViewActivity
 import android.app.AlertDialog
-import android.view.ViewTreeObserver
-import id.my.nutrikita.ui.splashscreen.SplashScreenActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
