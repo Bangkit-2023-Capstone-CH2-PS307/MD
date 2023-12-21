@@ -28,5 +28,5 @@ Download the APK here:<br>
 
 # MD Architecture
 <div align="center">
-  <img src="" alt="Mobile Application Architecture" style="width: 100%;">
+  <img src="" alt="Model-View-ViewModel Architecture" style="width: 100%;">
 </div>
