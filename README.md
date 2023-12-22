@@ -32,7 +32,9 @@ Download the APK here:<br>
 - Run the Application
 
 
-# MD Architecture
+## MD Architecture
 <div align="center">
+  <p>We use model-view-viewmodel architecture for building the apps. Here, we divide parts into the ui layer and data layer. In the ui layer, we used a ViewModel that incorporates LiveData to supply observed data to the activity. To get the data, view models are connected to the repository through a view model factory. The repository itself is located in the data layer and used to manage data sources both from local data source and remote data source. For the local data source, we implement Room to establish the database. As for the remote data source, Retrofit is used to interact with web services.
+</p>
   <img src="https://raw.githubusercontent.com/Bangkit-2023-Capstone-CH2-PS307/.github/main/profile/assets/MD%20Architecture.png" alt="Model-View-ViewModel Architecture" style="width: 100%;">
 </div>
