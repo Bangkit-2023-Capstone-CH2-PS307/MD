@@ -34,5 +34,5 @@ Download the APK here:<br>
 
 # MD Architecture
 <div align="center">
-  <img src="" alt="Model-View-ViewModel Architecture" style="width: 100%;">
+  <img src="https://raw.githubusercontent.com/Bangkit-2023-Capstone-CH2-PS307/.github/main/profile/assets/MD%20Architecture.png" alt="Model-View-ViewModel Architecture" style="width: 100%;">
 </div>
