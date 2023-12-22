@@ -69,7 +69,7 @@
     <string name="food_check_title">Makan Apa Hari Ini?</string>
     <string name="Camera">Kamera</string>
     <string name="Gallery">Galeri</string>
-    <string name="get_result"><![CDATA[Selanjutnya >]]></string>
+    <string name="get_result">Selanjutnya</string>
     <string name="permission_request_granted">Permintaan izin diterima</string>
     <string name="rejected_permission">Permintaan izin ditolak</string>
 
@@ -90,6 +90,20 @@
     <!-- favorite foods activity -->
     <string name="favorite_foods">Makanan Favorit</string>
     <string name="empty_favorite">Ups.. Anda belum menambahkan makanan favorit. Temukan makanan Anda dengan mengeklik tombol makanan kustom.</string>
+
+    <!--    profile activity    -->
+    <string name="profile">Profil</string>
+    <string name="edit_profile">Edit Profil</string>
+    <string name="language">Bahasa</string>
+    <string name="theme">Tema</string>
+
+    <!--    edit profile activity    -->
+    <string name="save">Simpan</string>
+
+    <!--    theme activity    -->
+    <string name="dark_mode">Mode Gelap</string>
+    <string name="light_mode">Mode Terang</string>
+    <string name="automatic">Otomatis</string>
 
     <!-- dummies -->
     <string name="telur">telur</string>

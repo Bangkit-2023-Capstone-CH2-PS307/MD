@@ -10,7 +10,7 @@
         android:id="@+id/tvCustomFoodResultTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginTop="42dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/custom_food_result"
         android:textSize="15sp"
@@ -18,13 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnArrowBack"
-        android:layout_margin="30dp"
+        style="?attr/materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:background="@color/transparent"
-        android:src="@drawable/baseline_arrow_back"
+        android:padding="0dp"
+        app:icon="@drawable/baseline_arrow_back"
+        app:iconTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,9 +36,9 @@
         android:id="@+id/rvFoodResultItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvCustomFoodResultTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCustomFoodResultTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

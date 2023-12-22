@@ -114,6 +114,34 @@ class DetailFoodActivity : AppCompatActivity() {
                 viewModel.saveFavoriteFood(favData)
             }
         }
+
+        binding.pbCalories.progress = foodData.calories?.toInt() ?: 0
+        binding.pbFat.progress = foodData.fatContent?.toInt() ?: 0
+        binding.pbSaturatedFat.progress = foodData.saturatedFatContent?.toInt() ?: 0
+        binding.pbCholesterol.progress = foodData.cholesterolContent?.toInt() ?: 0
+        binding.pbSodium.progress = foodData.sodiumContent?.toInt() ?: 0
+        binding.pbCarbohydrate.progress = foodData.carbohydrateContent?.toInt() ?: 0
+        binding.pbFiber.progress = foodData.fiberContent?.toInt() ?: 0
+        binding.pbSugar.progress = foodData.sugarContent?.toInt() ?: 0
+        binding.pbProtein.progress = foodData.proteinContent?.toInt() ?: 0
+
+        binding.quantityCalories.text =
+            getString(R.string.calories_quantity, foodData.calories.toString())
+        binding.quantityFat.text = getString(R.string.fat_quantity, foodData.fatContent.toString())
+        binding.quantitySaturatedFat.text =
+            getString(R.string.saturatedfat_quantity, foodData.saturatedFatContent.toString())
+        binding.quantityCholesterol.text =
+            getString(R.string.cholesterol_quantity, foodData.cholesterolContent.toString())
+        binding.quantitySodium.text =
+            getString(R.string.sodium_quantity, foodData.sodiumContent.toString())
+        binding.quantityCarbohydrate.text =
+            getString(R.string.carbohydrate_quantity, foodData.carbohydrateContent.toString())
+        binding.quantityFiber.text =
+            getString(R.string.fiber_quantity, foodData.fiberContent.toString())
+        binding.quantitySugar.text =
+            getString(R.string.sugar_quantity, foodData.sugarContent.toString())
+        binding.quantityProtein.text =
+            getString(R.string.protein_quantity, foodData.proteinContent.toString())
     }
 
     private fun setupFavData(favData: FoodData) {
@@ -158,6 +186,34 @@ class DetailFoodActivity : AppCompatActivity() {
                 viewModel.saveFavoriteFood(favData)
             }
         }
+
+        binding.pbCalories.progress = favData.calories?.toInt() ?: 0
+        binding.pbFat.progress = favData.fatContent?.toInt() ?: 0
+        binding.pbSaturatedFat.progress = favData.saturatedFatContent?.toInt() ?: 0
+        binding.pbCholesterol.progress = favData.cholesterolContent?.toInt() ?: 0
+        binding.pbSodium.progress = favData.sodiumContent?.toInt() ?: 0
+        binding.pbCarbohydrate.progress = favData.carbohydrateContent?.toInt() ?: 0
+        binding.pbFiber.progress = favData.fiberContent?.toInt() ?: 0
+        binding.pbSugar.progress = favData.sugarContent?.toInt() ?: 0
+        binding.pbProtein.progress = favData.proteinContent?.toInt() ?: 0
+
+        binding.quantityCalories.text =
+            getString(R.string.calories_quantity, favData.calories.toString())
+        binding.quantityFat.text = getString(R.string.fat_quantity, favData.fatContent.toString())
+        binding.quantitySaturatedFat.text =
+            getString(R.string.saturatedfat_quantity, favData.saturatedFatContent.toString())
+        binding.quantityCholesterol.text =
+            getString(R.string.cholesterol_quantity, favData.cholesterolContent.toString())
+        binding.quantitySodium.text =
+            getString(R.string.sodium_quantity, favData.sodiumContent.toString())
+        binding.quantityCarbohydrate.text =
+            getString(R.string.carbohydrate_quantity, favData.carbohydrateContent.toString())
+        binding.quantityFiber.text =
+            getString(R.string.fiber_quantity, favData.fiberContent.toString())
+        binding.quantitySugar.text =
+            getString(R.string.sugar_quantity, favData.sugarContent.toString())
+        binding.quantityProtein.text =
+            getString(R.string.protein_quantity, favData.proteinContent.toString())
     }
 
     private fun obtainViewModel(activity: DetailFoodActivity): DetailFoodViewModel {

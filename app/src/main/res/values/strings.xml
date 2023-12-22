@@ -68,7 +68,7 @@
     <string name="food_check_title">What to Eat Today?</string>
     <string name="Camera">Camera</string>
     <string name="Gallery">Gallery</string>
-    <string name="get_result"><![CDATA[Get Result >]]></string>
+    <string name="get_result">Get Result</string>
     <string name="permission_request_granted">Permission request granted</string>
     <string name="rejected_permission">Permission request denied</string>
 
@@ -89,6 +89,20 @@
     <!--    favorite foods activity    -->
     <string name="favorite_foods">Favorite Foods</string>
     <string name="empty_favorite">Oops.. You haven’t added the favorite food yet. Find your food by click the custom food button.</string>
+
+    <!--    profile activity    -->
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="language">Language</string>
+    <string name="theme">Theme</string>
+
+    <!--    edit profile activity    -->
+    <string name="save">Save</string>
+
+    <!--    theme activity    -->
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="automatic">Automatic</string>
 
     <!--    dummies    -->
     <string name="telur">telur</string>

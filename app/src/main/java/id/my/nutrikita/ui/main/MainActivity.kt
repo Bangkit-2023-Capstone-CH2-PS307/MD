@@ -30,6 +30,9 @@ import id.my.nutrikita.ui.favorite.FavoriteFoodActivity
 import id.my.nutrikita.ui.login.LoginActivity
 import id.my.nutrikita.ui.newsview.NewsViewActivity
 import android.app.AlertDialog
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import id.my.nutrikita.ui.profile.ProfileActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -49,9 +52,26 @@ class MainActivity : AppCompatActivity() {
         setupFavoriteRecyclerView()
         setBindingView()
         setupNewsData()
+        setupProfile()
 
         viewModel.getAllFavoriteFood().observe(this) {
             setupFavoriteFoodData(it)
+        }
+    }
+
+
+    private fun setupProfile() {
+        val user = auth.currentUser
+        user?.let {
+            binding.tvHomeTitle.text = getString(R.string.home_title, it.displayName)
+            Glide.with(this)
+                .load(it.photoUrl)
+                .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                .error(R.drawable.profile_placeholder_50)
+                .into(binding.ivProfile)
+        }
+        binding.ivProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
@@ -177,18 +197,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setBindingView() {
-        val user = auth.currentUser
         binding.ibLogout.setOnClickListener {
             showLogoutDialog()
         }
-        binding.tvHomeTitle.text = getString(R.string.home_title, user?.displayName)
-        binding.cvCustomFood.setOnClickListener {
+        binding.btnCustomFood.setOnClickListener {
             startActivity(Intent(this, CustomFoodActivity::class.java))
         }
-        binding.btnFavoritePage.setOnClickListener {
+        binding.btnFavoriteFoodTitle.setOnClickListener {
             startActivity(Intent(this, FavoriteFoodActivity::class.java))
         }
-        binding.cvCheckFoodNutrition.setOnClickListener {
+        binding.btnCheckFoodNutrition.setOnClickListener {
             startActivity(Intent(this, CheckFoodNutritionActivity::class.java))
         }
     }

@@ -24,9 +24,10 @@
             tools:visibility="invisible" />
 
         <TextView
-            android:id="@+id/tvHistoryTitle"
+            android:id="@+id/tvCheckFoodNutritionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/check_food_nutrition"
             android:textSize="15sp"
@@ -34,12 +35,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnArrowBack"
+            style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
-            android:src="@drawable/baseline_arrow_back"
+            android:padding="0dp"
+            app:icon="@drawable/baseline_arrow_back"
+            app:iconTint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +56,7 @@
             android:text="@string/food_check_title"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHistoryTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvCheckFoodNutritionTitle" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivFoodCheck"
@@ -93,22 +97,26 @@
             app:layout_constraintStart_toStartOf="@id/guideline2"
             app:layout_constraintTop_toBottomOf="@id/ivFoodCheck" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGetResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha="0"
-            android:clickable="true"
-            android:background="@color/transparent"
-            android:textColor="@color/black"
-            android:focusable="true"
             android:layout_marginTop="100dp"
+            android:alpha="1"
+            android:backgroundTint="@color/transparent"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/get_result"
+            android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/btnGallery"
+            app:icon="@drawable/baseline_arrow_forward"
+            app:iconGravity="end"
+            app:iconPadding="15dp"
+            app:iconTint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnGallery" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"

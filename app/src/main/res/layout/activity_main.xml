@@ -17,29 +17,70 @@
             app:layout_constraintBottom_toBottomOf="@id/tvHomeSubtitle"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/NutriKitaIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/transparent"
+            android:src="@drawable/nutrikita_icon_small"
+            android:transitionName="icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="30dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:transitionName="@string/app_name"
+            app:layout_constraintStart_toEndOf="@id/NutriKitaIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/ibLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:background="@color/transparent"
             android:src="@drawable/baseline_logout_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/ivProfile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/transparent"
+            tools:src="@tools:sample/avatars"
+            app:layout_constraintTop_toTopOf="@id/tvHomeTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toTopOf="@id/tvHomeSubtitle"/>
+
         <TextView
             android:id="@+id/tvHomeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="84dp"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins_semibold"
+            android:maxLines="1"
             android:text="@string/home_title"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="18sp"
+            android:paddingEnd="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/ivProfile"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/tvHomeSubtitle"
@@ -50,7 +91,7 @@
             android:paddingBottom="90dp"
             android:text="@string/home_subtitle"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivProfile"
             app:layout_constraintTop_toBottomOf="@id/tvHomeTitle" />
 
         <ProgressBar
@@ -398,113 +439,82 @@
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvCustomFood"
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:id="@+id/btnCustomFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="10dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="40dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/carousel">
+            app:layout_constraintTop_toBottomOf="@id/carousel"
+            android:layout_marginHorizontal="20dp"
+            app:icon="@drawable/ic_custom_food"
+            app:iconTint="@color/black"
+            app:iconSize="30dp"
+            app:elevation="10dp"
+            android:elevation="10dp"
+            android:paddingVertical="15dp"
+            android:text="@string/custom_food"
+            android:textColor="@color/black"
+            android:textAlignment="textStart"
+            app:iconPadding="16dp"
+            android:fontFamily="@font/poppins_semibold"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="15dp"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:contentDescription="@string/custom_food_icon"
-                    android:src="@drawable/ic_custom_food" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="18dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/custom_food"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvCheckFoodNutrition"
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:id="@+id/btnCheckFoodNutrition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="10dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="10dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvCustomFood">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/btnCustomFood"
+            android:layout_marginHorizontal="20dp"
+            app:icon="@drawable/ic_checkfood"
+            app:iconTint="@color/black"
+            app:iconSize="30dp"
+            app:elevation="10dp"
+            android:elevation="10dp"
+            android:paddingVertical="15dp"
+            android:text="@string/check_food_nutrition"
+            android:textColor="@color/black"
+            android:textAlignment="textStart"
+            app:iconPadding="16dp"
+            android:fontFamily="@font/poppins_semibold"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="15dp"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:contentDescription="@string/check_food_nutrition_icon"
-                    android:src="@drawable/ic_checkfood" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="18dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/check_food_nutrition"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tvFavoriteFoodTitle"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFavoriteFoodTitle"
             android:layout_width="wrap_content"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
+            app:icon="@drawable/baseline_arrow_forward"
+            app:iconTint="@color/black"
+            app:iconGravity="end"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/favorite_foods"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvCheckFoodNutrition" />
-
-        <ImageButton
-            android:id="@+id/btnFavoritePage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@color/transparent"
-            android:src="@drawable/baseline_arrow_forward"
-            app:layout_constraintBottom_toBottomOf="@id/tvFavoriteFoodTitle"
-            app:layout_constraintStart_toEndOf="@id/tvFavoriteFoodTitle"
-            app:layout_constraintTop_toTopOf="@id/tvFavoriteFoodTitle" />
+            app:layout_constraintTop_toBottomOf="@id/btnCheckFoodNutrition" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavoriteFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFavoriteFoodTitle" />
+            app:layout_constraintTop_toBottomOf="@id/btnFavoriteFoodTitle" />
 
         <TextView
             android:id="@+id/tvEmptyFavorite"
@@ -518,7 +528,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFavoriteFoodTitle" />
+            app:layout_constraintTop_toBottomOf="@id/btnFavoriteFoodTitle" />
 
         <ImageView
             android:id="@+id/iv_kitten"
@@ -529,7 +539,7 @@
             android:src="@drawable/ic_kitten"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFavoriteFoodTitle" />
+            app:layout_constraintTop_toBottomOf="@id/btnFavoriteFoodTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

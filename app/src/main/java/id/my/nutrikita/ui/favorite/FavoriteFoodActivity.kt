@@ -28,7 +28,7 @@ class FavoriteFoodActivity : AppCompatActivity() {
 
         viewModel = obtainViewModel(this)
 
-        binding.backBtn.setOnClickListener {
+        binding.btnArrowBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
