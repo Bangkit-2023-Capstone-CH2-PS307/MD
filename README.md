@@ -22,9 +22,9 @@ Download the APK here:<br>
 [NutriKita APK](https://drive.google.com/file/d/1WnLHmuKmRjj20Ed3vNd-Wnq2w83Yr88y/view?usp=drive_link)
 
 ## Installation
-### Prerequisites
+#### Prerequisites
 - Android Studio
-### Steps
+#### Steps
 - Clone project
  ```bash
  $ git clone https://github.com/Bangkit-2023-Capstone-CH2-PS307/MD.git
